@@ -14,17 +14,17 @@ public class TestServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
-		//recuperer les données d'un get		
+			
 		request.getParameter( "nomParametre" );
 		
-		// envoyer un objet à la jsp
+		
 		BeanExample bean = new BeanExample();
 		bean.setId(0);
 		bean.setName("Nicolas");
 		request.setAttribute( "data", bean );
 		
 		
-		//redirection sur une jsp
+		
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/bonjour.jsp" ).forward( request, response );
 		 
 	}
