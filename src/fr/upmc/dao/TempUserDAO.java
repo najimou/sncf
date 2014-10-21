@@ -2,14 +2,14 @@ package fr.upmc.dao;
 
 import org.hibernate.Query;
 
-import fr.upmc.bean.TempUser;
+import fr.upmc.bean.TempUserBean;
 
 public class TempUserDAO extends MasterDAO {
 
-	public TempUser getById(int id) {
+	public TempUserBean getById(int id) {
 		Query query = session.createQuery("from TempUser where ID = :id ");
 		query.setParameter("id", id);
-		TempUser e =  (TempUser) query.uniqueResult();
+		TempUserBean e =  (TempUserBean) query.uniqueResult();
 		return e;	
 		
 	}

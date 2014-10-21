@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import org.hibernate.Query;
 
-import fr.upmc.bean.Evaluation;
+import fr.upmc.bean.EvaluationBean;
 
 public class EvaluationDAO extends MasterDAO {
  
-	public Evaluation getById(int id){
+	public EvaluationBean getById(int id){
 		Query query = session.createQuery("from Evaluation where ID = :id ");
 		query.setParameter("id", id);
-		Evaluation e =  (Evaluation) query.uniqueResult();
+		EvaluationBean e =  (EvaluationBean) query.uniqueResult();
 		return e;		
 	}
 	

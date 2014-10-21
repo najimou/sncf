@@ -1,7 +1,6 @@
 package fr.upmc.dao;
 
 import org.hibernate.Session;
-
 import fr.upmc.bean.MasterBEAN;
 import fr.upmc.hibernate.HibernateUtil;
 

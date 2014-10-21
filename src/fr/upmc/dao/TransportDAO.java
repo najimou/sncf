@@ -4,21 +4,21 @@ import java.util.ArrayList;
 
 import org.hibernate.Query;
 
-import fr.upmc.bean.Transport;
+import fr.upmc.bean.TransportBean;
 
 public class TransportDAO extends MasterDAO{
 	
-	public Transport getById(int id){
+	public TransportBean getById(int id){
 		Query query = session.createQuery("from Transport where ID = :id ");
 		query.setParameter("id", id);
-		Transport e =  (Transport) query.uniqueResult();
+		TransportBean e =  (TransportBean) query.uniqueResult();
 		return e;		
 	}
 	
-	public ArrayList<Transport> getByIdTransporteur(int id){
+	public ArrayList<TransportBean> getByIdTransporteur(int id){
 		Query query = session.createQuery("from Transport where idTransporteur = :id ");
 		query.setParameter("id", id);
-		ArrayList<Transport> e =  (ArrayList<Transport>) query.list();
+		ArrayList<TransportBean> e =  (ArrayList<TransportBean>) query.list();
 		return e;		
 	}
 }
