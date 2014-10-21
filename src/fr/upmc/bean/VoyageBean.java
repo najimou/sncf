@@ -23,7 +23,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "VOYAGE")
-public class Voyage extends MasterBEAN implements Serializable{
+public class VoyageBean extends MasterBEAN implements Serializable{
    
 	private static final long serialVersionUID = 1L;
 	
@@ -48,10 +48,10 @@ public class Voyage extends MasterBEAN implements Serializable{
 	private String numeroTrain;  
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Trasporteur transporteur;
+	private TrasporteurBean transporteur;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "voyage")
-    public List<Transport> transport;
+    public List<TransportBean> transport;
 
 		public int getId() {
 			return id;
@@ -101,19 +101,19 @@ public class Voyage extends MasterBEAN implements Serializable{
 			this.numeroTrain = numeroTrain;
 		}
 		
-		public List<Transport> getTransport() {
+		public List<TransportBean> getTransport() {
 			return transport;
 		}
 		
-		public Trasporteur getTransporteur() {
+		public TrasporteurBean getTransporteur() {
 			return transporteur;
 		}
 
-		public void setTransporteur(Trasporteur transporteur) {
+		public void setTransporteur(TrasporteurBean transporteur) {
 			this.transporteur = transporteur;
 		}
 
-		public void setTransport(List<Transport> transport) {
+		public void setTransport(List<TransportBean> transport) {
 			this.transport = transport;
 		}
 		   

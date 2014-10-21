@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TRANSPORT")
-public class Transport extends MasterBEAN implements Serializable{
+public class TransportBean extends MasterBEAN implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -32,15 +32,18 @@ public class Transport extends MasterBEAN implements Serializable{
 	@Column(name = "ACCEPTED", nullable = false)
 	private boolean accepted;
 	
+	@Column(name = "ACCEPTEDBY", nullable = true)
+	private int acceptedBy;
+	
 	@Column(name = "FINISHED", nullable = true)
 	private boolean finished;
 	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "transport", cascade = CascadeType.ALL)
-	private TempUser tempUser;
+	private TempUserBean tempUser;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Voyage voyage;
+	private VoyageBean voyage;
 	
 	
 	
@@ -58,9 +61,15 @@ public class Transport extends MasterBEAN implements Serializable{
 		public void setFinished(boolean finished) {
 			this.finished = finished;
 		}
-		public TempUser getTempUser() {
-			if (tempUser == null) return new TempUser();
+		public TempUserBean getTempUser() {
+			if (tempUser == null) return new TempUserBean();
 			return tempUser;
+		}
+		public int isAcceptedBy() {
+			return acceptedBy;
+		}
+		public void setAcceptedBy(int acceptedBy) {
+			this.acceptedBy = acceptedBy;
 		}
 
 

@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TEMPUSER")
-public class TempUser extends MasterBEAN implements Serializable{
+public class TempUserBean extends MasterBEAN implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -46,11 +46,11 @@ public class TempUser extends MasterBEAN implements Serializable{
 		this.rated = rated;
 	}
 
-	public Transport getTransport() {
+	public TransportBean getTransport() {
 		return transport;
 	}
 
-	public void setTransport(Transport transport) {
+	public void setTransport(TransportBean transport) {
 		this.transport = transport;
 	}
 
@@ -59,11 +59,11 @@ public class TempUser extends MasterBEAN implements Serializable{
    
 	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
-    private Transport transport;
+    private TransportBean transport;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
-    private Evaluation evaluation;
+    private EvaluationBean evaluation;
 	
 	
 

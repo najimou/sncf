@@ -22,7 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "EVALUATION")
-public class Evaluation extends MasterBEAN implements Serializable {
+public class EvaluationBean extends MasterBEAN implements Serializable {
    
 
 	private static final long serialVersionUID = 1L;
@@ -40,10 +40,10 @@ public class Evaluation extends MasterBEAN implements Serializable {
     
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "evaluation", cascade = CascadeType.ALL)
-	private TempUser tempUser;
+	private TempUserBean tempUser;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Trasporteur transporteur;
+	private TrasporteurBean transporteur;
 	
 	public int getId() {
 		return id;

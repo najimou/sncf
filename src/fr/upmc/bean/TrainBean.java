@@ -3,7 +3,7 @@ package fr.upmc.bean;
 import java.io.Serializable;
 
 
-public class Train extends MasterBEAN implements Serializable {
+public class TrainBean extends MasterBEAN implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;

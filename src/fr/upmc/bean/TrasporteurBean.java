@@ -8,7 +8,6 @@ package fr.upmc.bean;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,10 +18,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import fr.upmc.bean.MasterBEAN;
 
 @Entity
 @Table(name = "TRANSPORTEUR")
-public class Trasporteur extends MasterBEAN implements Serializable{
+public class TrasporteurBean extends MasterBEAN implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -44,10 +44,10 @@ public class Trasporteur extends MasterBEAN implements Serializable{
 	private String password;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transporteur")
-	public List<Voyage> voyage;
+	public List<VoyageBean> voyage;
    
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transporteur")
-	public List<Evaluation> evaluation;
+	public List<EvaluationBean> evaluation;
    
    
 		public String getNom() {
@@ -80,16 +80,16 @@ public class Trasporteur extends MasterBEAN implements Serializable{
 		public void setId(int id) {
 			this.id = id;
 		}
-		public List<Voyage> getVoyage() {
+		public List<VoyageBean> getVoyage() {
 			return voyage;
 		}
-		public void setVoyage(List<Voyage> voyage) {
+		public void setVoyage(List<VoyageBean> voyage) {
 			this.voyage = voyage;
 		}
-		public List<Evaluation> getEvaluation() {
+		public List<EvaluationBean> getEvaluation() {
 			return evaluation;
 		}
-		public void setEvaluation(List<Evaluation> evaluation) {
+		public void setEvaluation(List<EvaluationBean> evaluation) {
 			this.evaluation = evaluation;
 		}
 		   
