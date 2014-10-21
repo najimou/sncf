@@ -1,6 +1,10 @@
 package fr.upmc.metier;
 
-import java.util.ArrayList;
+import fr.upmc.bean.TransportBean;
+import fr.upmc.bean.TrasporteurBean;
+import fr.upmc.dao.TransporteurDAO;
+import fr.upmc.service.MailService;
+
 
 /***********************************************************************
  * Module:  Trasporteur.java
@@ -8,12 +12,8 @@ import java.util.ArrayList;
  * Purpose: Defines the Class Trasporteur
  ***********************************************************************/
 
-
-
-
 public class Trasporteur {
-   public ArrayList<Voyage> voyage;
-   public ArrayList<Evaluation> evaluation;
+
    
    public boolean login() {
       // TODO: implement
@@ -25,9 +25,28 @@ public class Trasporteur {
       return false;
    }
    
-   public boolean updateProfile() {
-      // TODO: implement
-      return false;
+   public boolean createProfile(TrasporteurBean transporteur){
+	   
+	   try{
+		   TransporteurDAO dao = new TransporteurDAO();
+		   dao.insert(transporteur);
+		   return true;
+	   }catch(Exception e){
+		   return false;
+	   }
+	   
+   }
+   
+   public boolean updateProfile(TrasporteurBean transporteur) {
+     
+	   try{
+		   TransporteurDAO dao = new TransporteurDAO();
+		   dao.update(transporteur);
+		   return true;
+	   }catch(Exception e){
+		   return false;
+	   }
+	   
    }
    
    public boolean accepterTransport() {
@@ -46,77 +65,20 @@ public class Trasporteur {
    }
    
    public boolean finaliserTrasport() {
-      // TODO: implement
+	// TODO: implement
       return false;
    }
-   
-   public ArrayList<Voyage> getVoyage() {
-      if (voyage == null)
-         voyage = new ArrayList<Voyage>();
-      return voyage;
-   }
-   
-   
-   
-  
-   public void setVoyage(ArrayList<Voyage> newVoyage) {
-      removeAllVoyage();
-      voyage.addAll(newVoyage);
-   }
-   
-   public void addVoyage(Voyage newVoyage) {
-        if (newVoyage != null )this.voyage.add(newVoyage);
-   }
-   
-   public void removeVoyage(Voyage oldVoyage) {
-      if (oldVoyage == null)
-         return;
-      if (this.voyage != null)
-         if (this.voyage.contains(oldVoyage))
-            this.voyage.remove(oldVoyage);
-   }
-   
-   public void removeAllVoyage() {
-      if (voyage != null)
-         voyage.clear();
-   }
 
-   public ArrayList<Evaluation> getEvaluation() {
-      if (evaluation == null)
-         evaluation = new ArrayList<Evaluation>();
-      return evaluation;
-   }
-
-   
-
-   public void setEvaluation(ArrayList<Evaluation> newEvaluation) {
-      removeAllEvaluation();
-      evaluation.addAll(newEvaluation);
-      
-   }
-   
-
-   public void addEvaluation(Evaluation newEvaluation) {
-      if (newEvaluation == null)
-         return;
-      if (this.evaluation == null)
-         this.evaluation = new ArrayList<Evaluation>();
-      if (!this.evaluation.contains(newEvaluation))
-         this.evaluation.add(newEvaluation);
-   }
-   
-
-   public void removeEvaluation(Evaluation oldEvaluation) {
-      if (oldEvaluation == null)
-         return;
-      if (this.evaluation != null)
-         if (this.evaluation.contains(oldEvaluation))
-            this.evaluation.remove(oldEvaluation);
-   }
-   
-   public void removeAllEvaluation() {
-      if (evaluation != null)
-         evaluation.clear();
-   }
-
+   public boolean resendMail(TrasporteurBean t) {
+	   try{
+		   TransporteurDAO dao = new TransporteurDAO();
+		   TrasporteurBean pojo = dao.getByMail(t.getMail());
+		   MailService.sendMail(pojo.getMail(),"",  "renvoi mail", "hello mail");
+		   return true;
+	   }catch(Exception e){
+		   return false;
+	   }
+	
+	
+}
 }

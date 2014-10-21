@@ -1,6 +1,8 @@
 package fr.upmc.dao;
 
 import org.hibernate.Session;
+import org.hibernate.internal.util.xml.DTDEntityResolver;
+
 import fr.upmc.bean.MasterBEAN;
 import fr.upmc.hibernate.HibernateUtil;
 
@@ -9,7 +11,7 @@ public class MasterDAO {
 	Session session = HibernateUtil.getSessionFactory().openSession();
 	
 	public boolean insert(MasterBEAN insert){
-		
+		 
 		
 		try{
 			session.beginTransaction();

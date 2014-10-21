@@ -7,7 +7,7 @@ import fr.upmc.bean.TempUserBean;
 public class TempUserDAO extends MasterDAO {
 
 	public TempUserBean getById(int id) {
-		Query query = session.createQuery("from TempUser where ID = :id ");
+		Query query = session.createQuery("from TempUserBean where ID = :id ");
 		query.setParameter("id", id);
 		TempUserBean e =  (TempUserBean) query.uniqueResult();
 		return e;	
