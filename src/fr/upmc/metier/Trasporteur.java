@@ -69,10 +69,10 @@ public class Trasporteur {
       return false;
    }
 
-   public boolean resendMail(TrasporteurBean t) {
+   public boolean resendMail(String mail) {
 	   try{
 		   TransporteurDAO dao = new TransporteurDAO();
-		   TrasporteurBean pojo = dao.getByMail(t.getMail());
+		   TrasporteurBean pojo = dao.getByMail(mail);
 		   MailService.sendMail(pojo.getMail(),"",  "renvoi mail", "hello mail");
 		   return true;
 	   }catch(Exception e){

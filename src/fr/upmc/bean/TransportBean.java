@@ -13,9 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /***********************************************************************
- * Module:  Transport.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class Transport
+ * @author Nicolas Pigeot
  ***********************************************************************/
 
 @Entity

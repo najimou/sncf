@@ -1,9 +1,12 @@
 package fr.upmc.test.dao;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import fr.upmc.bean.EvaluationBean;
 import fr.upmc.bean.TrasporteurBean;
 import fr.upmc.dao.EvaluationDAO;
-import fr.upmc.dao.TransporteurDAO;
 
 public class testEvaluation {
 

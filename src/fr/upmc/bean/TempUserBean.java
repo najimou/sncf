@@ -13,9 +13,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /***********************************************************************
- * Module:  TempUser.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class TempUser
+ * @author Nicolas Pigeot
  ***********************************************************************/
 
 @Entity

@@ -1,5 +1,9 @@
 package fr.upmc.security;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 public class SecurityPattern {
 	
 	//Standard

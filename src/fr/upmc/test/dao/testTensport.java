@@ -1,5 +1,9 @@
 package fr.upmc.test.dao;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import fr.upmc.bean.TransportBean;
 import fr.upmc.dao.TransportDAO;
 

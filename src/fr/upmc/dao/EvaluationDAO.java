@@ -1,6 +1,8 @@
 package fr.upmc.dao;
 
-import java.util.ArrayList;
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
 
 import org.hibernate.Query;
 

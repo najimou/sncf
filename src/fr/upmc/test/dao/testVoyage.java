@@ -1,5 +1,9 @@
 package fr.upmc.test.dao;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import java.util.Date;
 
 import fr.upmc.dao.VoyageDAO;

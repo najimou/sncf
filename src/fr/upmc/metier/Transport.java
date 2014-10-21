@@ -1,9 +1,7 @@
 package fr.upmc.metier;
 
 /***********************************************************************
- * Module:  Transport.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class Transport
+ * @author Nicolas Pigeot
  ***********************************************************************/
 
 public class Transport {

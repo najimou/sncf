@@ -1,5 +1,9 @@
 package fr.upmc.dao;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import org.hibernate.Query;
 
 import fr.upmc.bean.TempUserBean;

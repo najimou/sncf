@@ -1,5 +1,9 @@
 package fr.upmc.servlet;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;

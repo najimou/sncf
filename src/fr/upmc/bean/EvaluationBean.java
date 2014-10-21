@@ -14,11 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /***********************************************************************
- * Module:  Evaluation.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class Evaluation
+ * @author Nicolas Pigeot
  ***********************************************************************/
-
 
 @Entity
 @Table(name = "EVALUATION")

@@ -1,9 +1,7 @@
 package fr.upmc.metier;
 
 /***********************************************************************
- * Module:  TempUser.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class TempUser
+ * @author Nicolas Pigeot
  ***********************************************************************/
 
 public class TempUser {

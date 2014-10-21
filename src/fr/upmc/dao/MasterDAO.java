@@ -1,7 +1,10 @@
 package fr.upmc.dao;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import org.hibernate.Session;
-import org.hibernate.internal.util.xml.DTDEntityResolver;
 
 import fr.upmc.bean.MasterBEAN;
 import fr.upmc.hibernate.HibernateUtil;

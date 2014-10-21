@@ -1,4 +1,8 @@
-package fr.upmc.bean;
+package fr.upmc.mappings;
+
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
 
 public class MappedNames {
 

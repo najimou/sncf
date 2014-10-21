@@ -1,5 +1,9 @@
 package fr.upmc.test.dao;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import fr.upmc.bean.TempUserBean;
 import fr.upmc.dao.TempUserDAO;
 

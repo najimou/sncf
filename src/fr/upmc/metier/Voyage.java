@@ -6,9 +6,7 @@ import fr.upmc.dao.TransportDAO;
 import fr.upmc.dao.VoyageDAO;
 
 /***********************************************************************
- * Module:  Voyage.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class Voyage
+ * @author Nicolas Pigeot
  ***********************************************************************/
 
 

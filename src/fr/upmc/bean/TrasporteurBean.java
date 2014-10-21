@@ -1,9 +1,7 @@
 package fr.upmc.bean;
 
 /***********************************************************************
- * Module:  Trasporteur.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class Trasporteur
+ * @author Nicolas Pigeot
  ***********************************************************************/
 
 import java.io.Serializable;

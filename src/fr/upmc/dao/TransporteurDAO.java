@@ -1,5 +1,9 @@
 package fr.upmc.dao;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import java.io.Serializable;
 
 import org.hibernate.Query;

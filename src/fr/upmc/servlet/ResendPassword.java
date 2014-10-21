@@ -1,6 +1,12 @@
 package fr.upmc.servlet;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,9 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.upmc.bean.MappedNames;
-import fr.upmc.bean.TrasporteurBean;
+import fr.upmc.mappings.MappedErrors;
+import fr.upmc.mappings.MappedNames;
 import fr.upmc.metier.Trasporteur;
+import fr.upmc.security.SecurityPattern;
 @WebServlet("/ResendPassword")
 public class ResendPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,13 +31,16 @@ public class ResendPassword extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TrasporteurBean t = new TrasporteurBean();
 		
-		// TODO add regular expression 
-		t.setMail(request.getAttribute(MappedNames.MAIL).toString());
-		
-		Trasporteur metier = new Trasporteur();
-		metier.resendMail(t);
+		Pattern pattern = Pattern.compile(SecurityPattern.EMAIL_PATTERN);
+		Matcher matcher = pattern.matcher(request.getAttribute(MappedNames.MAIL).toString());
+		if (!matcher.matches()){
+			Trasporteur metier = new Trasporteur();
+			metier.resendMail(request.getAttribute(MappedNames.MAIL).toString());
+			
+		}else {
+			request.setAttribute("error", MappedErrors.MAUVAIS_MAIL);
+		}	
 	}
 
 }

@@ -1,13 +1,10 @@
 package fr.upmc.bean;
 
 /***********************************************************************
- * Module:  Voyage.java
- * Author:  Nicolas Pigeot
- * Purpose: Defines the Class Voyage
+ * @author Nicolas Pigeot
  ***********************************************************************/
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;

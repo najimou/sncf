@@ -1,5 +1,9 @@
 package fr.upmc.test;
 
+/***********************************************************************
+ * @author Nicolas Pigeot
+ ***********************************************************************/
+
 import fr.upmc.bean.EvaluationBean;
 import fr.upmc.bean.TempUserBean;
 import fr.upmc.dao.EvaluationDAO;
