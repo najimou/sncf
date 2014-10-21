@@ -1,6 +1,6 @@
 package fr.upmc.test.dao;
 
-import fr.upmc.bean.Transport;
+import fr.upmc.bean.TransportBean;
 import fr.upmc.dao.TransportDAO;
 
 public class testTensport {
@@ -9,7 +9,7 @@ public class testTensport {
 		
 		TransportDAO dao = new TransportDAO();
 		
-		Transport pojo = new Transport();
+		TransportBean pojo = new TransportBean();
 		
 		pojo.setAccepted(true);
 		pojo.setFinished(false);
@@ -24,7 +24,7 @@ public class testTensport {
 		
 		//get by id
 		
-		Transport pojo2 = dao.getById(1);
+		TransportBean pojo2 = dao.getById(1);
 		
 		
 		//delete

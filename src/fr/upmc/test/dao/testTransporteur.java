@@ -1,5 +1,5 @@
 package fr.upmc.test.dao;
-import fr.upmc.bean.Trasporteur;
+import fr.upmc.bean.TrasporteurBean;
 import fr.upmc.dao.TransporteurDAO;
 
 public class testTransporteur {
@@ -9,7 +9,7 @@ public class testTransporteur {
 		
 TransporteurDAO dao = new TransporteurDAO();
 		
-		Trasporteur pojo = new Trasporteur();
+		TrasporteurBean pojo = new TrasporteurBean();
 		
 		pojo.setId(1);
 		pojo.setMail("mmaaaailllll");

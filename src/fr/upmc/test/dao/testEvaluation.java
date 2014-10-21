@@ -1,7 +1,7 @@
 package fr.upmc.test.dao;
 
-import fr.upmc.bean.Evaluation;
-import fr.upmc.bean.Trasporteur;
+import fr.upmc.bean.EvaluationBean;
+import fr.upmc.bean.TrasporteurBean;
 import fr.upmc.dao.EvaluationDAO;
 import fr.upmc.dao.TransporteurDAO;
 
@@ -13,7 +13,7 @@ public class testEvaluation {
 		
 		EvaluationDAO dao = new EvaluationDAO();
 		
-		Evaluation pojo = new Evaluation();
+		EvaluationBean pojo = new EvaluationBean();
 		
 		pojo.setNote(5);
 		pojo.setCommentaire("commentaire test");
@@ -23,7 +23,7 @@ public class testEvaluation {
 		
 		//update
 		pojo.setNote(1);
-		Trasporteur tr = new Trasporteur();
+		TrasporteurBean tr = new TrasporteurBean();
 		//tr.setId(1);
 		tr.setMail("aaa");
 		tr.setNom("nom");
@@ -40,7 +40,7 @@ public class testEvaluation {
 		
 		//get by id
 		
-		Evaluation pojo2 = dao.getById(1);
+		EvaluationBean pojo2 = dao.getById(1);
 		tr.setMail("ma");
 		//pojo2.setTransporteur(tr);
 		pojo2.setNote(3);

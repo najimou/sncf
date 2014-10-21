@@ -3,7 +3,7 @@ package fr.upmc.test.dao;
 import java.util.Date;
 
 import fr.upmc.dao.VoyageDAO;
-import fr.upmc.bean.Voyage;
+import fr.upmc.bean.VoyageBean;
 
 public class testVoyage {
 
@@ -11,7 +11,7 @@ public class testVoyage {
 		// TODO Auto-generated method stub
 		
 		VoyageDAO dao = new VoyageDAO();
-		Voyage pojo = new Voyage();
+		VoyageBean pojo = new VoyageBean();
 		
 		pojo.setArrivee("Rome");
 		pojo.setDepart("Milan");

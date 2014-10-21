@@ -1,6 +1,6 @@
 package fr.upmc.test.dao;
 
-import fr.upmc.bean.TempUser;
+import fr.upmc.bean.TempUserBean;
 import fr.upmc.dao.TempUserDAO;
 
 public class testTempUser {
@@ -12,7 +12,7 @@ public class testTempUser {
 		
 		
 		TempUserDAO dao = new TempUserDAO();
-		TempUser pojo = new TempUser();
+		TempUserBean pojo = new TempUserBean();
 		
 		pojo.setId(1);
 		pojo.setMail("mailll");
@@ -27,7 +27,7 @@ public class testTempUser {
 		dao.update(pojo);
 		
 		//get by id
-		TempUser pojo2 = dao.getById(1);
+		TempUserBean pojo2 = dao.getById(1);
 
 		//delete		
 		dao.delete(pojo);
