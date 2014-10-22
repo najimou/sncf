@@ -45,14 +45,14 @@
            </p> 
             <p class="lead" >
             
-<form class="form-inline" role="form" action="/sncf_upmc">
+<form class="form-inline" role="form" action="/DAR_UPMC/sncf_upmc">
   <div class="form-group">
     <label class="sr-only" for="depart">Station de départ</label>
-    <input type="text" class="form-control" id="depart" placeholder="D&eacute;part">
+    <input type="text" class="form-control" id="depart" name="numGareDepart" placeholder="D&eacute;part" value= "87393009">
   </div>
   <div class="form-group">
     <label class="sr-only" for="arrivee">Station d'arrivée</label>
-    <input type="text" class="form-control" id="arrivee" placeholder="Arriv&eacute;e">
+    <input type="text" class="form-control" id="arrivee" name="numGareArrivee" placeholder="Arriv&eacute;e" value= "87393033">
   </div>
   <br>
   <div class="radio">

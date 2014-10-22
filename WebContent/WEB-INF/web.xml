@@ -7,7 +7,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SNCF</servlet-name>
-    <url-pattern>/test2</url-pattern>
+    <url-pattern>/sncf_upmc</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
