@@ -8,5 +8,10 @@
 </head>
 <body>
 
+error!
+<% String error = (String) request.getAttribute("error");
+ out.print(error);
+%>
+
 </body>
 </html>
