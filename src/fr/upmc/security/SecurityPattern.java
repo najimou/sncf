@@ -11,7 +11,7 @@ public class SecurityPattern {
 	//	  [a-z]	   			 # Match characters and symbols in the list, a-z
 	//	             {3,15}  # Length at least 3 characters and maximum length of 15 
 	//	$                    # End of the line
-	public static final String STANDARD_PATTERN = "^[a-z][A-Z]{3,30}$"; 
+	public static final String STANDARD_PATTERN = "^[a-zA-Z]{3,30}$"; 
 	
 	//Password
 	//			  (					# Start of group

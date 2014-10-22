@@ -73,8 +73,11 @@ public class Trasporteur {
 	   try{
 		   TransporteurDAO dao = new TransporteurDAO();
 		   TrasporteurBean pojo = dao.getByMail(mail);
-		   MailService.sendMail(pojo.getMail(),"",  "renvoi mail", "hello mail");
-		   return true;
+		   if (pojo != null){
+			   MailService.sendMail(pojo.getMail(),"",  "renvoi mail", "hello mail");
+			   return true;
+		   } else return false;
+		  
 	   }catch(Exception e){
 		   return false;
 	   }

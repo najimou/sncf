@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.upmc.mappings.MappedErrors;
+import fr.upmc.mappings.MappedJsp;
 import fr.upmc.mappings.MappedNames;
 import fr.upmc.metier.Trasporteur;
 import fr.upmc.security.SecurityPattern;
@@ -36,10 +37,15 @@ public class ResendPassword extends HttpServlet {
 		Matcher matcher = pattern.matcher(request.getAttribute(MappedNames.MAIL).toString());
 		if (!matcher.matches()){
 			Trasporteur metier = new Trasporteur();
-			metier.resendMail(request.getAttribute(MappedNames.MAIL).toString());
-			
+			if (metier.resendMail(request.getAttribute(MappedNames.MAIL).toString())){
+				this.getServletContext().getRequestDispatcher( MappedJsp.LOGIN ).forward( request, response );
+			}
+			else {
+				this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );
+			}
 		}else {
 			request.setAttribute("error", MappedErrors.MAUVAIS_MAIL);
+			this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );
 		}	
 	}
 

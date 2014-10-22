@@ -14,7 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.upmc.bean.TransportBean;
 import fr.upmc.bean.TrasporteurBean;
+import fr.upmc.dao.TransportDAO;
+import fr.upmc.dao.TransporteurDAO;
 import fr.upmc.mappings.MappedErrors;
 import fr.upmc.mappings.MappedJsp;
 import fr.upmc.mappings.MappedMessages;
@@ -37,55 +40,64 @@ public class CreateCompte extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TrasporteurBean t = new TrasporteurBean();
 		
-		
+		boolean error = false;
+		try{
 		//************************************NOM
 		
 		Pattern pattern = Pattern.compile(SecurityPattern.STANDARD_PATTERN);
-		Matcher matcher = pattern.matcher(request.getAttribute(MappedNames.NOM).toString());
+		String cache = request.getParameter(MappedNames.NOM);
+		Matcher matcher = pattern.matcher(cache);
 		
-		if (matcher.matches()){
-			request.setAttribute("error", MappedErrors.NOM_INVALIDE);
+		if (!matcher.matches()){
+			request.setAttribute("error", MappedErrors.NOM_INVALIDE); error = true;
 		}
 		
 		
 		//*************************************PRENOM
-		matcher = pattern.matcher(request.getAttribute(MappedNames.PRENOM).toString());
+		matcher = pattern.matcher(request.getParameter(MappedNames.PRENOM).toString());
 		if (!matcher.matches()){
-			request.setAttribute("error", MappedErrors.PRENOM_INVALIDE);
+			request.setAttribute("error", MappedErrors.PRENOM_INVALIDE); error = true;
 		}
 		
 		//*************************************PASSWORD
 		pattern = Pattern.compile(SecurityPattern.PASSWORD_PATTERN);
-		matcher = pattern.matcher(request.getAttribute(MappedNames.PASSWORD).toString());
+		matcher = pattern.matcher(request.getParameter(MappedNames.PASSWORD).toString());
 		if (!matcher.matches()){
-			request.setAttribute("error", MappedErrors.PASSWORD_INVALIDE);
+			request.setAttribute("error", MappedErrors.PASSWORD_INVALIDE); error = true;
 		}
 		
 		//*************************************MAIL
 		pattern = Pattern.compile(SecurityPattern.EMAIL_PATTERN);
-		matcher = pattern.matcher(request.getAttribute(MappedNames.MAIL).toString());
+		matcher = pattern.matcher(request.getParameter(MappedNames.MAIL).toString());
 		if (!matcher.matches()){
-			request.setAttribute("error", MappedErrors.MAIL_INVALIDE);
+			request.setAttribute("error", MappedErrors.MAIL_INVALIDE);error = true;
 		}
 		
-		if ("".equals(request.getAttribute("error"))){
+		if (!error){
 			Trasporteur metier = new Trasporteur();
-				try {
-					t.setNom((request.getAttribute(MappedNames.NOM).toString()));
-					t.setPrenom(request.getAttribute(MappedNames.PRENOM).toString());
-					t.setPassword(request.getAttribute(MappedNames.PASSWORD).toString());
-					metier.createProfile(t);
-					t.setMail(request.getAttribute(MappedNames.MAIL).toString());
-					request.setAttribute("message", MappedMessages.ACCOUNT_CREATED);
-					this.getServletContext().getRequestDispatcher( MappedJsp.LOGIN ).forward( request, response );
-				} catch (Exception e){
-					request.setAttribute("error", MappedErrors.GENERAL_ERROR);		
-				}
+					TransporteurDAO dao = new TransporteurDAO();
+					TrasporteurBean bean = dao.getByMail(request.getParameter(MappedNames.MAIL).toString());
+					if (bean == null){
+							TrasporteurBean t = new TrasporteurBean();
+							t.setNom((request.getParameter(MappedNames.NOM).toString()));
+							t.setPrenom(request.getParameter(MappedNames.PRENOM).toString());
+							t.setPassword(request.getParameter(MappedNames.PASSWORD).toString());
+							t.setMail(request.getParameter(MappedNames.MAIL).toString());
+							metier.createProfile(t);
+							request.setAttribute("message", MappedMessages.ACCOUNT_CREATED);
+							this.getServletContext().getRequestDispatcher( MappedJsp.LOGIN ).forward( request, response );
+					} else {
+						request.setAttribute("error", MappedErrors.MAIL_DEJA_EXISTANT);error = true;
+						this.getServletContext().getRequestDispatcher(MappedJsp.ERROR ).forward( request, response );
+					}
+		}else {
+			this.getServletContext().getRequestDispatcher(MappedJsp.ERROR ).forward( request, response );
 		}
-		this.getServletContext().getRequestDispatcher(MappedJsp.ERROR ).forward( request, response );	
-		
+		}
+		catch (NullPointerException e){
+			this.getServletContext().getRequestDispatcher(MappedJsp.ERROR ).forward( request, response );	
+		}
 	}
 
 }
