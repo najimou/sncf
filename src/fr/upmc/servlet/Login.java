@@ -31,52 +31,69 @@ public class Login extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher( MappedJsp.LOGIN ).forward( request, response );
+	
+		try {
+			HttpSession session = request.getSession(true);
+			TrasporteurBean bean = (TrasporteurBean) session.getAttribute("user");
+			bean.getPrenom();
+			request.setAttribute("error", MappedErrors.ALREADY_LOGGED_IN); 
+			response.sendRedirect(MappedJsp.HOME);
+		} catch(NullPointerException e){
+			this.getServletContext().getRequestDispatcher( MappedJsp.LOGIN_JSP ).forward( request, response );
+		}	
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		boolean canlogin = true;
 		//*************************************MAIL
 		Pattern pattern = Pattern.compile(SecurityPattern.EMAIL_PATTERN);
-		Matcher matcher = pattern.matcher(request.getAttribute(MappedNames.MAIL).toString());
+		Matcher matcher = pattern.matcher(request.getParameter(MappedNames.MAIL).toString());
 		if (!matcher.matches()){
-			request.setAttribute("error", MappedErrors.MAIL_INVALIDE);
+			request.setAttribute("error", MappedErrors.MAIL_INVALIDE); canlogin = false;
 		}
 		
 		
 		//*************************************PASSWORD
 		pattern = Pattern.compile(SecurityPattern.PASSWORD_PATTERN);
-		matcher = pattern.matcher(request.getAttribute(MappedNames.PASSWORD).toString());
+		matcher = pattern.matcher(request.getParameter(MappedNames.PASSWORD).toString());
 		if (!matcher.matches()){
-			request.setAttribute("error", MappedErrors.PASSWORD_INVALIDE);
+			request.setAttribute("error", MappedErrors.PASSWORD_INVALIDE);canlogin = false;
 		}
 		
-		if ("".equals(request.getAttribute("error"))){
+		if (canlogin){
 			
 				try {
 					TransporteurDAO dao = new TransporteurDAO();
-					TrasporteurBean pojo = dao.getByMail(request.getAttribute(MappedNames.MAIL).toString());
-					if (!pojo.equals(null)){
+					TrasporteurBean pojo = dao.getByMail(request.getParameter(MappedNames.MAIL).toString());
+					if (!pojo.getMail().equals(null)){
 						
-						if (pojo.getPassword().equals(request.getAttribute(MappedNames.PASSWORD).toString())){
-							// set session
+						if (pojo.getPassword().equals(request.getParameter(MappedNames.PASSWORD).toString())){
+							
 							HttpSession session = request.getSession(true);
 							pojo.setPassword("");
 							session.setAttribute("user", pojo);
-							// redirect
-							this.getServletContext().getRequestDispatcher(MappedJsp.HOME ).forward( request, response );
+							
+							response.sendRedirect(MappedJsp.HOME);
 						}
 						else {
-							request.setAttribute("error", MappedErrors.PASSWORD_INVALIDE);
-							this.getServletContext().getRequestDispatcher(MappedJsp.LOGIN ).forward( request, response );	
+							request.setAttribute("error", MappedErrors.MAUVAIS_PASSWORD);
+							this.getServletContext().getRequestDispatcher(MappedJsp.LOGIN_JSP ).forward( request, response );
 						}
 						
 					}
-				} catch (Exception e){
-					request.setAttribute("error", MappedErrors.GENERAL_ERROR);		
+					
+				}catch (NullPointerException e){	
+					request.setAttribute("error", MappedErrors.MAUVAIS_MAIL);
+					this.getServletContext().getRequestDispatcher(MappedJsp.LOGIN_JSP ).forward( request, response );
+				}catch (Exception e){
+					e.printStackTrace();
+					request.setAttribute("error", MappedErrors.GENERAL_ERROR);	
+					this.getServletContext().getRequestDispatcher(MappedJsp.LOGIN_JSP ).forward( request, response );
 				}
+		}else {
+			this.getServletContext().getRequestDispatcher(MappedJsp.LOGIN_JSP ).forward( request, response );
 		}
-		this.getServletContext().getRequestDispatcher(MappedJsp.LOGIN ).forward( request, response );		
 	}
 }

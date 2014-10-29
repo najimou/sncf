@@ -73,10 +73,10 @@ public class TestServlet extends HttpServlet {
 		
 		try {
 			doc = parseXML(yc.getInputStream());
-			NodeList descNodesNum = doc.getElementsByTagName("num");
-			NodeList descNodesDateDepart = doc.getElementsByTagName("date");
-			NodeList descNodesMiss = doc.getElementsByTagName("miss");
-			NodeList descNodesTerm = doc.getElementsByTagName("term");
+			NodeList descNodesNum 				= doc.getElementsByTagName("num");
+			NodeList descNodesDateDepart 		= doc.getElementsByTagName("date");
+			NodeList descNodesMiss 				= doc.getElementsByTagName("miss");
+			NodeList descNodesTerm 				= doc.getElementsByTagName("term");
 //			NodeList descNodesEtat = doc.getElementsByTagName("etat");
 
 			for (int i = 0; i < descNodesNum.getLength(); i++) {

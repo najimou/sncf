@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.upmc.bean.TransportBean;
 import fr.upmc.bean.TrasporteurBean;
-import fr.upmc.dao.TransportDAO;
 import fr.upmc.dao.TransporteurDAO;
 import fr.upmc.mappings.MappedErrors;
 import fr.upmc.mappings.MappedJsp;
@@ -36,7 +34,7 @@ public class CreateCompte extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				this.getServletContext().getRequestDispatcher( MappedJsp.CREATE_ACCOUNT ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( MappedJsp.CREATE_ACCOUNT_JSP ).forward( request, response );
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -86,17 +84,17 @@ public class CreateCompte extends HttpServlet {
 							t.setMail(request.getParameter(MappedNames.MAIL).toString());
 							metier.createProfile(t);
 							request.setAttribute("message", MappedMessages.ACCOUNT_CREATED);
-							this.getServletContext().getRequestDispatcher( MappedJsp.LOGIN ).forward( request, response );
+							response.sendRedirect(MappedJsp.LOGIN);
 					} else {
 						request.setAttribute("error", MappedErrors.MAIL_DEJA_EXISTANT);error = true;
 						this.getServletContext().getRequestDispatcher(MappedJsp.ERROR ).forward( request, response );
 					}
 		}else {
-			this.getServletContext().getRequestDispatcher(MappedJsp.ERROR ).forward( request, response );
+			this.getServletContext().getRequestDispatcher(MappedJsp.CREATE_ACCOUNT_JSP ).forward( request, response );
 		}
 		}
 		catch (NullPointerException e){
-			this.getServletContext().getRequestDispatcher(MappedJsp.ERROR ).forward( request, response );	
+			this.getServletContext().getRequestDispatcher(MappedJsp.CREATE_ACCOUNT_JSP ).forward( request, response );
 		}
 	}
 

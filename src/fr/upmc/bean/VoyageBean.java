@@ -32,14 +32,17 @@ public class VoyageBean extends MasterBEAN implements Serializable{
 	@Column(name = "DEPART", nullable = false)
 	private String depart;
 	
+	@Column(name = "DATE", nullable = false)
+	private String date;
+
 	@Column(name = "HEUREDEPART", nullable = false)
-	private java.util.Date heureDepart;
+	private String heureDepart;
 	
 	@Column(name = "ARRIVE", nullable = false)
 	private String arrivee;
 	
 	@Column(name = "HEUREARRIVEE", nullable = false)
-	private java.util.Date heureArrivee;
+	private String heureArrivee;
 	
 	@Column(name = "NBTRAIN", nullable = false)
 	private String numeroTrain;  
@@ -66,11 +69,11 @@ public class VoyageBean extends MasterBEAN implements Serializable{
 			this.depart = depart;
 		}
 		
-		public java.util.Date getHeureDepart() {
+		public String getHeureDepart() {
 			return heureDepart;
 		}
 		
-		public void setHeureDepart(java.util.Date heureDepart) {
+		public void setHeureDepart(String heureDepart) {
 			this.heureDepart = heureDepart;
 		}
 		
@@ -82,11 +85,11 @@ public class VoyageBean extends MasterBEAN implements Serializable{
 			this.arrivee = arrivee;
 		}
 		
-		public java.util.Date getHeureArrivee() {
+		public String getHeureArrivee() {
 			return heureArrivee;
 		}
 		
-		public void setHeureArrivee(java.util.Date heureArrivee) {
+		public void setHeureArrivee(String heureArrivee) {
 			this.heureArrivee = heureArrivee;
 		}
 		
@@ -112,6 +115,14 @@ public class VoyageBean extends MasterBEAN implements Serializable{
 
 		public void setTransport(List<TransportBean> transport) {
 			this.transport = transport;
+		}
+		
+		public String getDate() {
+			return date;
+		}
+
+		public void setDate(String date) {
+			this.date = date;
 		}
 		   
    

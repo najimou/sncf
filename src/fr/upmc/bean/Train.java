@@ -1,7 +1,6 @@
 package fr.upmc.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 
 public class Train extends MasterBEAN implements Serializable {

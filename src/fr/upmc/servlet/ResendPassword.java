@@ -19,6 +19,8 @@ import fr.upmc.mappings.MappedJsp;
 import fr.upmc.mappings.MappedNames;
 import fr.upmc.metier.Trasporteur;
 import fr.upmc.security.SecurityPattern;
+
+
 @WebServlet("/ResendPassword")
 public class ResendPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,22 +30,22 @@ public class ResendPassword extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		this.getServletContext().getRequestDispatcher( MappedJsp.SEND_PASSWORD_JSP ).forward( request, response );
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Pattern pattern = Pattern.compile(SecurityPattern.EMAIL_PATTERN);
-		Matcher matcher = pattern.matcher(request.getAttribute(MappedNames.MAIL).toString());
-		if (!matcher.matches()){
+		Matcher matcher = pattern.matcher(request.getParameter(MappedNames.MAIL).toString());
+		if (matcher.matches()){
 			Trasporteur metier = new Trasporteur();
-			if (metier.resendMail(request.getAttribute(MappedNames.MAIL).toString())){
-				this.getServletContext().getRequestDispatcher( MappedJsp.LOGIN ).forward( request, response );
-			}
-			else {
+			if (metier.resendMail(request.getParameter(MappedNames.MAIL).toString())){
+				response.sendRedirect(MappedJsp.LOGIN);
+			} else {
+				request.setAttribute("error", MappedErrors.GENERAL_ERROR);	
 				this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );
 			}
-		}else {
+		} else {
 			request.setAttribute("error", MappedErrors.MAUVAIS_MAIL);
 			this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );
 		}	

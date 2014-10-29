@@ -1,35 +1,27 @@
 package fr.upmc.servlet;
 
-/***********************************************************************
- * @author Nicolas Pigeot
- ***********************************************************************/
-
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.upmc.mappings.MappedJsp;
-
-@WebServlet("/ProposerDepart")
-public class ProposerDepart extends HttpServlet {
+@WebServlet("/GetTrains")
+public class GetTrains extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public ProposerDepart() {
+    public GetTrains() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_VOYAGES_JSP ).forward( request, response );
+		// TODO Auto-generated method stub
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 	}
 
 }

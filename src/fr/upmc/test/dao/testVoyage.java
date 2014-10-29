@@ -19,8 +19,8 @@ public class testVoyage {
 		
 		pojo.setArrivee("Rome");
 		pojo.setDepart("Milan");
-		pojo.setHeureArrivee(new Date());
-		pojo.setHeureDepart(new Date());
+		pojo.setHeureArrivee("aa");
+		pojo.setHeureDepart("aa");
 		pojo.setNumeroTrain("58478");
 		
 		

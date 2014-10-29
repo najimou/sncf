@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.upmc.bean.TransportBean;
+import fr.upmc.bean.TrasporteurBean;
 import fr.upmc.bean.VoyageBean;
 import fr.upmc.mappings.MappedErrors;
 import fr.upmc.mappings.MappedJsp;
+import fr.upmc.mappings.MappedNames;
 import fr.upmc.metier.Voyage;
 
 
@@ -31,36 +32,35 @@ public class RenseignerVoyage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		TransportBean pojo = (TransportBean) session.getAttribute("User");
+		TrasporteurBean pojo = (TrasporteurBean) session.getAttribute("user");
 		if (pojo == null){
 			request.setAttribute("error", MappedErrors.NOT_AUTORIZED);
 			this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );
 		} else {
-			this.getServletContext().getRequestDispatcher( MappedJsp.RENSEIGNER_VOYAGE).forward( request, response );
+			this.getServletContext().getRequestDispatcher( MappedJsp.RENSEIGNER_VOYAGE_JSP).forward( request, response );
 		}
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		TransportBean pojo = (TransportBean) session.getAttribute("User");
+		TrasporteurBean pojo = (TrasporteurBean) session.getAttribute("user");
 		if (pojo == null){
 			request.setAttribute("error", MappedErrors.NOT_AUTORIZED);
 			this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );
 		} else {
 			// TODO controler si voyage existe deja
-			
-			// TODO gestion dates
 			VoyageBean bean = new VoyageBean();
-			bean.setDepart(request.getParameter("").toString());
-			//bean.setHeureDepart((Date)(request.getParameter(""))));
-			bean.setArrivee(request.getParameter("").toString());
-			//bean.setHeureArrivee(request.getParameter("").toString());
-			bean.setNumeroTrain(request.getParameter("").toString());
-			//bean.setTransporteur(request.getParameter("").toString());			
+			bean.setDepart(request.getParameter(MappedNames.GARE_DEPART).toString());
+			bean.setHeureDepart(request.getParameter(MappedNames.HEURE_DEPART).toString());
+			bean.setArrivee(request.getParameter(MappedNames.GARE_ARRIVEE).toString());
+			bean.setHeureArrivee(request.getParameter(MappedNames.HEURE_ARRIVEE).toString());
+			bean.setNumeroTrain(request.getParameter((MappedNames.NB_TRAIN).toString()));
+			bean.setTransporteur((((TrasporteurBean) session.getAttribute("user"))));	
+			bean.setDate(request.getParameter((MappedNames.DATE).toString()));
 			Voyage v = new Voyage();
 			v.ajouterVoyage(bean);
-			this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_VOYAGES).forward( request, response );
+			response.sendRedirect(MappedJsp.LISTE_VOYAGES);
 		}
 		
 	}
