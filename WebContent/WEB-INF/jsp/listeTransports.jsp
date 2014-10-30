@@ -65,6 +65,9 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
+					 
+					 
+					 <p> Offres de transport</p>
 					 <div class="table-responsive"> 
 				        <table class="table table-bordered">
 				            <thead>
@@ -86,6 +89,67 @@
 				                    <td><%=vb.getColisDescription()%></td>
 				                    <td><%=vb.getColisDimension()%></td>
 				                    <td><%=vb.getCout() %></td>
+				                </tr>
+				            <% } %>   
+				            </tbody>
+				        </table>
+				</div>
+				
+				
+								<p> Transports à faire</p>
+					 <div class="table-responsive"> 
+				        <table class="table table-bordered">
+				            <thead>
+				                <tr>
+				                    <th>Train</th>
+				                    <th>Description</th>
+				                    <th>Dimension</th>
+				                    <th>Gain</th>
+				                    <th>Note</th>
+				                </tr>
+				            </thead> 
+				            <tbody>
+				            
+				            <% ArrayList<TransportBean> v2 = (ArrayList<TransportBean>) request.getAttribute("transport"); 
+				            for (TransportBean vb : v2){
+				            %>
+				            
+				                <tr>
+				                 	<td><%=vb.getVoyage().getDepart()%>-<%=vb.getVoyage().getArrivee() %> [<%=vb.getVoyage().getDate()%>]</td>
+				                    <td><%=vb.getColisDescription()%></td>
+				                    <td><%=vb.getColisDimension()%></td>
+				                    <td><%=vb.getCout() %></td>
+				                    <td> :)</td>
+				                </tr>
+				            <% } %>   
+				            </tbody>
+				        </table>
+				</div>
+				
+				<p> Transports effectué</p>
+					 <div class="table-responsive"> 
+				        <table class="table table-bordered">
+				            <thead>
+				                <tr>
+				                    <th>Train</th>
+				                    <th>Description</th>
+				                    <th>Dimension</th>
+				                    <th>Gain</th>
+				                    <th>Note</th>
+				                </tr>
+				            </thead> 
+				            <tbody>
+				            
+				            <% ArrayList<TransportBean> v3 = (ArrayList<TransportBean>) request.getAttribute("transport"); 
+				            for (TransportBean vb : v3){
+				            %>
+				            
+				                <tr>
+				                 	<td><%=vb.getVoyage().getDepart()%>-<%=vb.getVoyage().getArrivee() %> [<%=vb.getVoyage().getDate()%>]</td>
+				                    <td><%=vb.getColisDescription()%></td>
+				                    <td><%=vb.getColisDimension()%></td>
+				                    <td><%=vb.getCout() %></td>
+				                    <td> :)</td>
 				                </tr>
 				            <% } %>   
 				            </tbody>

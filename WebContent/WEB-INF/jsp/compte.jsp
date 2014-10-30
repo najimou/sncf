@@ -38,19 +38,19 @@
             <li><a href="<%=MappedJsp.HOME%>">Contact</a></li>
              <%HttpSession s = request.getSession(true);
             
-            TrasporteurBean bean = (TrasporteurBean) s.getAttribute("user");
-			try{
-					String li =  bean.getPrenom() +" "+bean.getNom(); 
-		            %>
-		            <li><a href="<%=MappedJsp.RENSEIGNER_VOYAGE%>">Renseigner voyage</a></li>
-		            <li><a href="<%=MappedJsp.LISTE_TRANSPORTS%>">Liste transports</a></li>
-		            <li><a href="<%=MappedJsp.ACCOUNT%>"><%=li%></a></li>
-		            <li><a href="<%=MappedJsp.LOGOUT%>">Logout</a></li>
-           <%} catch (Exception e){
-        	 %> 
-	        	    <li><a href="<%=MappedJsp.CREATE_ACCOUNT%>">Create count</a></li>
-	        	    <li><a href="<%=MappedJsp.LOGIN%>">Login</a></li>
-          <% } %>
+             TrasporteurBean bean = (TrasporteurBean) s.getAttribute("user");
+ 			try{
+ 					String li =  bean.getPrenom() +" "+bean.getNom(); 
+ 		            %>
+ 		            <li><a href="<%=MappedJsp.LISTE_VOYAGES%>">Voyages</a></li>
+ 		            <li><a href="<%=MappedJsp.LISTE_TRANSPORTS%>">Transports</a></li>
+ 		            <li><a href="<%=MappedJsp.ACCOUNT%>"><%=li%></a></li>
+ 		            <li><a href="<%=MappedJsp.LOGOUT%>">Logout</a></li>
+            <%} catch (Exception e){
+         	 %> 
+ 	        	    <li><a href="<%=MappedJsp.CREATE_ACCOUNT%>">Create count</a></li>
+ 	        	    <li><a href="<%=MappedJsp.LOGIN%>">Login</a></li>
+           <% } %>
            
           </ul>
         </div>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<%@page import="fr.upmc.bean.TrasporteurBean"%>
+
 <%@page import="fr.upmc.mappings.MappedNames"%>
+<%@page import="fr.upmc.bean.TrasporteurBean"%>
 <%@page import="fr.upmc.mappings.MappedJsp"%>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -37,8 +39,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="<%=MappedJsp.HOME%>">Help</a></li>
             <li><a href="<%=MappedJsp.HOME%>">Contact</a></li>
-            
-            <%HttpSession s = request.getSession(true);
+             <%HttpSession s = request.getSession(true);
             
             TrasporteurBean bean = (TrasporteurBean) s.getAttribute("user");
 			try{
@@ -64,43 +65,44 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
-					<% if (request.getAttribute("error")!=null) out.print("<div id =\"error\">" + request.getAttribute("error") +"</div>"); %> 
-					<% if (request.getAttribute("message")!=null) out.print("<div id =\"message\">" + request.getAttribute("message") +"</div>"); %> 
+					<% if (request.getAttribute("error")!=null) out.print("<div id =\"error\">" + request.getAttribute("error") +"</div>"); %>
 					
 					
-					<form role="form" method="post" class="form-horizontal" >
+						<form role="form" method="post" class="form-horizontal" >
 						  <div class="form-group">
-						    
-						     <label for="" class="col-sm-2 control-label">Nom</label>
-     				 <div class="col-sm-10"><input type="text" name="<%=MappedNames.NOM%>" class="form-control" id="<%=MappedNames.NOM%>" placeholder="Nom" value="<%=((TrasporteurBean)request.getSession().getAttribute("user")).getNom()%>">
+						  	<label for="" class="col-sm-2 control-label">Votre E-mail</label>
+     						<div class="col-sm-10">
+						    <input type="text" name="<%=MappedNames.MAIL_ENVOYEUR%>" class="form-control" id="<%=MappedNames.MAIL_ENVOYEUR%>">
+						  	</div>
+						  </div>
+						  <div class="form-group">
+						  <label for="" class="col-sm-2 control-label">E-mail receveur</label>
+     				 		<div class="col-sm-10">
+						    <input type="text" name="<%=MappedNames.MAIL_RECEVEUR%>" class="form-control" id="<%=MappedNames.MAIL_RECEVEUR%>">
+						  	</div>
+						  </div>
+						  <div class="form-group">
+						  <label for="" class="col-sm-2 control-label">Gare Départ</label>
+     				 <div class="col-sm-10">
+						    <input type="text" name="<%=MappedNames.GARE_DEPART%>" class="form-control" id="<%=MappedNames.GARE_DEPART%>">
 						  </div></div>
 						  <div class="form-group">
-						   <label for="" class="col-sm-2 control-label">Prenom</label>
+						  <label for="" class="col-sm-2 control-label">Gare Arrivée</label>
      				 <div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.PRENOM%>" class="form-control" id="<%=MappedNames.PRENOM%>" placeholder="Prenom" value="<%=((TrasporteurBean)request.getSession().getAttribute("user")).getPrenom()%>">
-						  </div></div>
-						  <div class="form-group">
-						   <label for="" class="col-sm-2 control-label">Email</label>
-     				 <div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.MAIL%>" class="form-control" id="<%=MappedNames.MAIL%>" placeholder="E-mail" value="<%=((TrasporteurBean)request.getSession().getAttribute("user")).getMail()%>">
-						  </div></div>
-						  <div class="form-group">
-						   <label for="" class="col-sm-2 control-label">Password</label>
-     				 <div class="col-sm-10">
-						    <input type="password" name="<%=MappedNames.PASSWORD%>" class="form-control" id="<%=MappedNames.PASSWORD%>" placeholder="Enter password">
-						  </div></div>
-						   <div class="form-group">
-						    <label for="" class="col-sm-2 control-label">Password 2</label>
-     				 <div class="col-sm-10">
-						    <input type="password" name="<%=MappedNames.PASSWORDCONFIRMATION%>" class="form-control" id="<%=MappedNames.PASSWORDCONFIRMATION%>" placeholder="Enter password another time">
-						  </div></div>
+						    <input type="text" name="<%=MappedNames.GARE_ARRIVEE%>" class="form-control" id="<%=MappedNames.GARE_ARRIVEE%>">
+						  </div>
+						  </div>
 						    <br>
-						  <button type="submit" class="btn btn-success">UPDATE</button><br>
+						  <button type="submit" class="btn btn-success">Créer</button><br>
 					</form>
+				</div>
 			</div>
 	    </div>
 	</div>
+	
+	
 
+	
 	<div id="footer">
 		<div class="container">
 			<div class="row">

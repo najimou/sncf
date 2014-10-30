@@ -64,7 +64,10 @@
 				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
 					<img src="img/Train.png" alt="!">
 					<p>Voyager gratuitement, c'est possible ! </p>
-					<p>Decouvre <b>Gratis trip! </b> le site qui te permet de financer tes voyages en train et voyager gratuitement ! Bientot aussi sur le reseau TGV ! </p>
+					<p>Decouvre <b>Gratis trip! </b></p>
+					<p>Le site qui te permet de financer tes voyages en train et voyager gratuitement ! <br> Bientot aussi sur le reseau TGV ! </p>
+					<form  method="get" action="<%=MappedJsp.CREATE_TRANSPORT %>" >
+					<button type="submit" class="btn btn-success">Envoyer un colis</button>
 				</div>
 			</div>
 	    </div>
