@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="fr.upmc.bean.TrasporteurBean"%>
+<%@page import="fr.upmc.mappings.MappedJsp"%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,80 +12,77 @@
 
     <title>Projet UPMC - Transilien SNCF 2014/2015</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/cover.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 
   </head>
 
   <body>
   
-  	<div class="site-wrapper">
+  	<body>
 
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <li class="masthead-brand">Projet UPMC</li>
-              <ul class="nav masthead-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Contact/Credits</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="inner cover">
-          <p class="bg-primary">
-            <h1>Envoi ton colis ! </h1>
-            <p>Achete des objets sur ebay ou le bon coin et organise le transport de ton colis ! <br>
-            Des milliers de personnes voyagent chaque jour sur le reseau transilien et peuvent livrer ton colis ! </p>
-            
-            <h1>Livre des colis ! </h1>
-            <p>Tu utilise chaque matin le reseau transilien pour aller à ton travail? Livre des colis ! Une superbe façon d'amortir, chaque matin avant de commencer à travailler ! </p>
-            
-           </p> 
-            <p class="lead" >
-            
-<form class="form-inline" role="form" action="/DAR_UPMC/sncf_upmc">
-  <div class="form-group">
-    <label class="sr-only" for="depart">Station de départ</label>
-    <input type="text" class="form-control" id="depart" name="numGareDepart" placeholder="D&eacute;part" value= "87393009">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="arrivee">Station d'arrivée</label>
-    <input type="text" class="form-control" id="arrivee" name="numGareArrivee" placeholder="Arriv&eacute;e" value= "87393033">
-  </div>
-  <br>
-  <div class="radio">
-  <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-    Je livre !
-  </label>
-</div>
-<div class="radio">
-  <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-   J'envoi/receptionne un colis !
-  </label>
-</div>
-<br>
-  <button type="submit" class="btn btn-primary">Rechercher</button>
-</form>
-            	<!-- changer lien, pour rediriger sur javascript et faire un appel ajax -->
-            </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>UPMC Projects - 2014/2015</p>
-            </div>
-          </div>
-
+   
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.jsp"> Gratis trip ! </a>
         </div>
-
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="<%=MappedJsp.HOME%>">Help</a></li>
+            <li><a href="<%=MappedJsp.HOME%>">Contact</a></li>
+             <%HttpSession s = request.getSession(true);
+            
+            TrasporteurBean bean = (TrasporteurBean) s.getAttribute("user");
+			try{
+					String li =  bean.getPrenom() +" "+bean.getNom(); 
+		            %>
+		            <li><a href="<%=MappedJsp.LISTE_VOYAGES%>">Voyages</a></li>
+		            <li><a href="<%=MappedJsp.LISTE_TRANSPORTS%>">Transports</a></li>
+		            <li><a href="<%=MappedJsp.ACCOUNT%>"><%=li%></a></li>
+		            <li><a href="<%=MappedJsp.LOGOUT%>">Logout</a></li>
+           <%} catch (Exception e){
+        	 %> 
+	        	    <li><a href="<%=MappedJsp.CREATE_ACCOUNT%>">Create count</a></li>
+	        	    <li><a href="<%=MappedJsp.LOGIN%>">Login</a></li>
+          <% } %>
+           
+          </ul>
+        </div>
       </div>
-
     </div>
+
+	
+	<div id="ww">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
+					<img src="img/Train.png" alt="!">
+					<p>Voyager gratuitement, c'est possible ! </p>
+					<p>Decouvre <b>Gratis trip! </b> le site qui te permet de financer tes voyages en train et voyager gratuitement ! Bientot aussi sur le reseau TGV ! </p>
+				</div>
+			</div>
+	    </div>
+	</div>
+	
+	
+
+	
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+					<p>
+						Projet universitaire - UPMC Paris6
+					</p>
+			</div>
+		
+		</div>
+	</div>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
