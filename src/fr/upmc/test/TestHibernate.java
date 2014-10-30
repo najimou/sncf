@@ -21,9 +21,6 @@ public class TestHibernate {
 		tmp.setPassword("pass");
 		//obj.setTempUser(tmp);
 		dao.insert(obj);
-		
-	
-
 		obj.setCommentaire("commentaire 2!");
 
 		dao.update(obj);

@@ -7,20 +7,26 @@ package fr.upmc.mappings;
 public class MappedNames {
 
 	//creation, update profile and resendMail
-	public static String NOM 					= "nom";
-	public static String PRENOM					= "prenom";
-	public static String MAIL					= "mail";
-	public static String PASSWORD 				= "password";
-	public static String PASSWORDCONFIRMATION 	= "password_confirm";
+	public static final String NOM 						= "nom";
+	public static final String PRENOM					= "prenom";
+	public static final String MAIL						= "mail";
+	public static final String PASSWORD 				= "password";
+	public static final String PASSWORDCONFIRMATION 	= "password_confirm";
 	
 	
 	// voyages
-	public static String CODE 					= "code";
-	public static String GARE_DEPART			= "depart";
-	public static String GARE_ARRIVEE			= "arrivee";
-	public static String DATE 					= "date";
-	public static String HEURE_DEPART			= "hdep";
-	public static String HEURE_ARRIVEE			= "harr";
-	public static String NB_TRAIN 				= "nbtr";
+	public static final String CODE 					= "code";
+	public static final String GARE_DEPART				= "depart";
+	public static final String GARE_ARRIVEE				= "arrivee";
+	public static final String DATE 					= "date";
+	public static final String HEURE_DEPART				= "hdep";
+	public static final String HEURE_ARRIVEE			= "harr";
+	public static final String NB_TRAIN 				= "nbtr";
+	
+	//creation envoi
+	public static final String MAIL_ENVOYEUR			= "menv";
+	public static final String MAIL_RECEVEUR			= "mrcv";
+	public static final String PRIX 					= "mn";
+	public static final String TRAIN 					= "code";
 	
 }

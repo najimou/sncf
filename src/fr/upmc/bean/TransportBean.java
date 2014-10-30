@@ -33,6 +33,9 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	@Column(name = "ACCEPTEDBY", nullable = true)
 	private int acceptedBy;
 	
+	@Column(name = "PROPOSEDTO", nullable = true)
+	private int proposedTo;
+	
 	@Column(name = "FINISHED", nullable = true)
 	private boolean finished;
 	
@@ -56,17 +59,21 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	
 	
 		public VoyageBean getVoyage() {
-		return voyage;
-	}
+			return voyage;
+		}
+		
 		public String getCout() {
-		return cout;
-	}
-	public void setCout(String cout) {
-		this.cout = cout;
-	}
+			return cout;
+		}
+		
+		public void setCout(String cout) {
+			this.cout = cout;
+		}
+		
 		public boolean isAccepted() {
 			return accepted;
 		}
+		
 		public void setAccepted(boolean accepted) {
 			this.accepted = accepted;
 		}
@@ -99,7 +106,12 @@ public class TransportBean extends MasterBEAN implements Serializable{
 		public void setAcceptedBy(int acceptedBy) {
 			this.acceptedBy = acceptedBy;
 		}
-
+		public int getProposedTo() {
+			return proposedTo;
+		}
+		public void setProposedTo(int proposedTo) {
+			this.proposedTo = proposedTo;
+		}
 
    
    

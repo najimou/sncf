@@ -35,8 +35,11 @@ public class ListeTransports extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		TrasporteurBean pojo = (TrasporteurBean) session.getAttribute("user");
 		if (pojo == null){	
+			
 			ArrayList<TransportBean> transports = dao.getAll();
-			request.setAttribute("transport", transports);
+			request.setAttribute("transportsProposition", transports);
+			
+			
 			this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_TRANSPORTS_JSP ).forward( request, response );
 		} else {
 			ArrayList<TransportBean> transports = dao.getByIdTransporteur(pojo.getId());

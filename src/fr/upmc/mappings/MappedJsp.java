@@ -6,6 +6,7 @@ package fr.upmc.mappings;
 
 public class MappedJsp {
 	
+	
 	public static String ROOT					= "/DAR_UPMC";
 	public static String HOME					= ROOT+"/index.jsp";
 	
@@ -36,5 +37,8 @@ public class MappedJsp {
 	
 	public static String LISTE_TRANSPORTS 		= "/DAR_UPMC/ListeTransports";
 	public static String LISTE_TRANSPORTS_JSP	= "/WEB-INF/jsp/listeTransports.jsp";
+	
+	public static final String CREATE_TRANSPORT 	= "/DAR_UPMC/CreerEnvoi";
+	public static final String CREATE_TRANSPORT_JSP	= "/WEB-INF/jsp/creerEnvoi.jsp";
 	
 }

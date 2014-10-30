@@ -9,9 +9,11 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/test</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        
         <property name="connection.pool_size">1</property>
         <property name="show_sql">true</property>
-<property name="hbm2ddl.auto">create</property>	  	 <!---->
+		<property name="hbm2ddl.auto">create</property>	  	 <!---->
 		
 		
 		 <mapping class="fr.upmc.bean.EvaluationBean"/> 

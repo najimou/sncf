@@ -20,7 +20,7 @@ public class TransportDAO extends MasterDAO{
 	}
 	
 	public ArrayList<TransportBean> getByIdTransporteur(int id){
-		Query query = session.createQuery("from TransportBean as b  where b.idTransporteur = :id ");
+		Query query = session.createQuery("from TransportBean as b  where b.proposedTo = :id ");
 		query.setParameter("id", id);
 		ArrayList<TransportBean> e =  (ArrayList<TransportBean>) query.list();
 		return e;		
