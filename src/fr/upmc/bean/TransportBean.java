@@ -36,6 +36,15 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	@Column(name = "FINISHED", nullable = true)
 	private boolean finished;
 	
+	@Column(name = "COLIS_DESCRIPTION", nullable = true)
+	private String colisDescription;
+	
+	@Column(name = "COUT", nullable = true)
+	private String cout;
+	
+	@Column(name = "COLIS_DIMENSION", nullable = true)
+	private String colisDimension;
+	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "transport", cascade = CascadeType.ALL)
 	private TempUserBean tempUser;
 	
@@ -46,6 +55,15 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	
 	
 	
+		public VoyageBean getVoyage() {
+		return voyage;
+	}
+		public String getCout() {
+		return cout;
+	}
+	public void setCout(String cout) {
+		this.cout = cout;
+	}
 		public boolean isAccepted() {
 			return accepted;
 		}
@@ -62,6 +80,18 @@ public class TransportBean extends MasterBEAN implements Serializable{
 		public TempUserBean getTempUser() {
 			if (tempUser == null) return new TempUserBean();
 			return tempUser;
+		}
+		public String getColisDescription() {
+			return colisDescription;
+		}
+		public void setColisDescription(String colisDescription) {
+			this.colisDescription = colisDescription;
+		}
+		public String getColisDimension() {
+			return colisDimension;
+		}
+		public void setColisDimension(String colisDimension) {
+			this.colisDimension = colisDimension;
 		}
 		public int isAcceptedBy() {
 			return acceptedBy;

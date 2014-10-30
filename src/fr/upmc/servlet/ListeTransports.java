@@ -5,6 +5,7 @@ package fr.upmc.servlet;
  ***********************************************************************/
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.upmc.bean.TransportBean;
+import fr.upmc.bean.TrasporteurBean;
+import fr.upmc.dao.TransportDAO;
 import fr.upmc.mappings.MappedErrors;
 import fr.upmc.mappings.MappedJsp;
 import fr.upmc.metier.Voyage;
@@ -28,13 +31,17 @@ public class ListeTransports extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		TransportDAO dao = new TransportDAO();
 		HttpSession session = request.getSession(true);
-		TransportBean pojo = (TransportBean) session.getAttribute("User");
-		if (pojo == null){
-			request.setAttribute("error", MappedErrors.NOT_AUTORIZED);
-			this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );
+		TrasporteurBean pojo = (TrasporteurBean) session.getAttribute("user");
+		if (pojo == null){	
+			ArrayList<TransportBean> transports = dao.getAll();
+			request.setAttribute("transport", transports);
+			this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_TRANSPORTS_JSP ).forward( request, response );
 		} else {
-			this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_TRANSPORTS).forward( request, response );
+			ArrayList<TransportBean> transports = dao.getByIdTransporteur(pojo.getId());
+			request.setAttribute("transport", transports);
+			this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_TRANSPORTS_JSP).forward( request, response );
 		}
 	}
 
