@@ -1,6 +1,7 @@
 package fr.upmc.bean;
 
 import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,13 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	@Column(name = "ID", unique = true, nullable = false)
 	private int id; 
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	@Column(name = "ACCEPTED", nullable = false)
 	private boolean accepted;
 	
@@ -48,6 +56,19 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	@Column(name = "COLIS_DIMENSION", nullable = true)
 	private String colisDimension;
 	
+	@Column(name = "MAIL_ENVOI", nullable = true)
+	private String mailEnvoi;
+	
+	@Column(name = "MAIL_RECEPTION", nullable = true)
+	private String mailReception;
+	
+	@Column(name = "LISTE_VOYAGES_PROP_ENVOI", nullable = true)
+	private String propositionVoyagesEnvoi;
+	
+	@Column(name = "TOKEN", nullable = true)
+	private String token;
+	
+	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "transport", cascade = CascadeType.ALL)
 	private TempUserBean tempUser;
 	
@@ -58,6 +79,22 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	
 	
 	
+	public String getMailEnvoi() {
+		return mailEnvoi;
+	}
+
+	public void setMailEnvoi(String mailEnvoi) {
+		this.mailEnvoi = mailEnvoi;
+	}
+
+	public String getMailReception() {
+		return mailReception;
+	}
+
+	public void setMailReception(String mailReception) {
+		this.mailReception = mailReception;
+	}
+
 		public VoyageBean getVoyage() {
 			return voyage;
 		}
@@ -113,6 +150,20 @@ public class TransportBean extends MasterBEAN implements Serializable{
 			this.proposedTo = proposedTo;
 		}
 
-   
-   
+		public String getPropositionVoyagesEnvoi() {
+			return propositionVoyagesEnvoi;
+		}
+
+		public void setPropositionVoyagesEnvoi(String propositionVoyagesEnvoi) {
+			this.propositionVoyagesEnvoi = propositionVoyagesEnvoi;
+		}
+
+
+		public String getToken() {
+			return token;
+		}
+
+		public void setToken(String token) {
+			this.token = token;
+		}
 }

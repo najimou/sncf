@@ -1,5 +1,7 @@
 package fr.upmc.metier;
 
+import java.util.ArrayList;
+
 import fr.upmc.bean.TransportBean;
 import fr.upmc.bean.VoyageBean;
 import fr.upmc.dao.TransportDAO;
@@ -65,5 +67,20 @@ public class Voyage {
 		  return false;
 	  }
    }
+
+public ArrayList<VoyageBean> getVoyagesByGares(String depart, String arrivee) {
+	
+	VoyageDAO dao = new VoyageDAO();
+	ArrayList<VoyageBean> list = dao.getByGares(depart, arrivee);
+	if (list.size()<0)	return new ArrayList<VoyageBean>();
+	else return list;
+}
+
+public ArrayList<VoyageBean> getVoyagesById(String p) {
+	String[] ids = p.split(",");
+	VoyageDAO dao = new VoyageDAO();
+	ArrayList<VoyageBean> list = dao.getByIds(ids);
+	return list;
+}
 
 }

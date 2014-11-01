@@ -35,6 +35,18 @@ public class TempUserBean extends MasterBEAN implements Serializable{
 	
 	@Column(name = "PUBLISHED", nullable = false)
 	private boolean published;
+
+	@Column(name = "RATED", nullable = false)
+	private boolean rated;
+   
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+    private TransportBean transport;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+    private EvaluationBean evaluation;
+	
 	
 	public boolean isRated() {
 		return rated;
@@ -51,20 +63,6 @@ public class TempUserBean extends MasterBEAN implements Serializable{
 	public void setTransport(TransportBean transport) {
 		this.transport = transport;
 	}
-
-	@Column(name = "RATED", nullable = false)
-	private boolean rated;
-   
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
-    private TransportBean transport;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
-    private EvaluationBean evaluation;
-	
-	
-
     
     	public String getMail() {
 			return mail;

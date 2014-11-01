@@ -31,4 +31,22 @@ public class TransportDAO extends MasterDAO{
 		ArrayList<TransportBean> e =  (ArrayList<TransportBean>) query.list();
 		return e;		
 	}
+
+	public TransportBean getByToken(String token) {
+		Query query = session.createQuery("from TransportBean where token = :token ");
+		query.setParameter("token", token);
+		TransportBean e =  (TransportBean) query.uniqueResult();
+		return e;
+	}
+
+	public TransportBean getByTokenAndMail(String token, String mail) {
+		Query query = session.createQuery("from TransportBean where token = :token ");
+		query.setParameter("token", token);
+		TransportBean e =  (TransportBean) query.uniqueResult();
+		if (e.getMailReception().equals(mail))
+			return e;
+		return null;
+	}
+
+
 }

@@ -28,5 +28,7 @@ public class MappedNames {
 	public static final String MAIL_RECEVEUR			= "mrcv";
 	public static final String PRIX 					= "mn";
 	public static final String TRAIN 					= "code";
+	public static final String DESCRIPTION_COLIS		= "dsccolis";
+	public static final String DIMENTION_COLIS			= "dmscolis";
 	
 }
