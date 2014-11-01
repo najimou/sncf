@@ -68,31 +68,12 @@
 					
 					
 					
-						<form role="form" method="post">
-						  <div class="form-group">
+					<form role="form" method="post">
+						 
 						  <div class="container">
-                    <div class="row">
-						  <div class='col-sm-6'>
-                            <div class="form-group">
-                                <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function () {
-                                $('#datetimepicker1').datetimepicker();
-                            });
-                        </script>
-                        </div></div>
-						  
-						  <div class='input-group date' id='datetimepicker1'>
-			                    <input type='text' class="form-control" name="<%=MappedNames.DATE%>"  />
-			                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-			                    </span>
-			               </div>
+                    
+                       
+
 						  </div>
 						  <div class="form-group">
 						    <input type="text" name="<%=MappedNames.GARE_DEPART%>" class="form-control" id="<%=MappedNames.GARE_DEPART%>" placeholder="Depart" >

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-
-<%@page import="fr.upmc.mappings.MappedNames"%>
+<%@page import="fr.upmc.bean.VoyageBean"%>
+<%@page import="fr.upmc.bean.TransportBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="fr.upmc.bean.TrasporteurBean"%>
 <%@page import="fr.upmc.mappings.MappedJsp"%>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -65,60 +65,47 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
-					<% if (request.getAttribute("error")!=null) out.print("<div id =\"error\">" + request.getAttribute("error") +"</div>"); %>
 					
-					
-						<form role="form" method="post" class="form-horizontal" >
+					 <p> Selectionner les trains</p>
+					 <div class="table-responsive"> 
+				         <% ArrayList<VoyageBean> v = (ArrayList<VoyageBean>) request.getAttribute("voyages"); 
+				            if (v.size() >0){%>
+				        <form method="post">
+				        <table class="table table-bordered">
+				            <thead>
+				                <tr>
+				                	<th>Selectionner</th>
+				                    <th>Date</th>
+				                    <th>Heure depart</th>
+				                    <th>Heure arrivée</th> 
+				                </tr>
+				            </thead> 
+				            <tbody>
+				            
+				           <%
+				           		int i=0;
+				            	for (VoyageBean vb : v){
+				           		 %>
+				            	
+				                <tr>
+				                	<td><input type="checkbox" name="option" value="<%=vb.getId()%>"></td>
+				                 	<td><%=vb.getDate()%></td>
+				                    <td><%=vb.getHeureDepart()%></td>
+				                    <td><%=vb.getHeureArrivee()%></td>
+				                </tr>
+				            <% } %>
+				           
+				            </tbody>
+				        </table>
+				          <button type="submit" class="btn btn-success">Valider</button><br>	
+				            </form>
+				            
+				            <%
+				            } else {
+				            	%> Aucun train disponible :(<%
+				            } %>   
+				</div>
 				
-						
-						  <div class="form-group">
-						  	<label for="" class="col-sm-2 control-label">Votre E-mail</label>
-     						<div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.MAIL_ENVOYEUR%>" class="form-control" id="<%=MappedNames.MAIL_ENVOYEUR%>">
-						  	</div>
-						  </div>
-						  <div class="form-group">
-						  <label for="" class="col-sm-2 control-label">E-mail receveur</label>
-     				 		<div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.MAIL_RECEVEUR%>" class="form-control" id="<%=MappedNames.MAIL_RECEVEUR%>">
-						  	</div>
-						  </div>
-						  <div class="form-group">
-						  <label for="" class="col-sm-2 control-label">Gare Départ</label>
-     				 <div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.GARE_DEPART%>" class="form-control" id="<%=MappedNames.GARE_DEPART%>">
-						  </div></div>
-						  <div class="form-group">
-						  <label for="" class="col-sm-2 control-label">Gare Arrivée</label>
-     				 <div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.GARE_ARRIVEE%>" class="form-control" id="<%=MappedNames.GARE_ARRIVEE%>">
-						  </div>
-						  </div>
-
-						  <div class="form-group">
-  							<label for="" class="col-sm-2 control-label">Description colis</label>
-     						<div class="col-sm-10">
-						    <textarea class="form-control" rows="5" id="comment" name="<%=MappedNames.DESCRIPTION_COLIS%>"></textarea>
-						    </div>
-						  </div>
-						  <br>
-						   <div class="form-group">
-						  	<label for="" class="col-sm-2 control-label">Dimention colis</label>
-     						<div class="col-sm-10">
-							  <div class="btn-group" id="buttons_dimention">
-							  	  <button type="button" class="btn btn-default">Trés Petit</button>
-								  <button type="button" class="btn btn-default">Petit</button>
-								  <button type="button" class="btn btn-default">Moyen</button>
-								  <button type="button" class="btn btn-default">Gros</button>
-								  <button type="button" class="btn btn-default">Trés gros</button>
-							 </div>
-							 </div>
-							</div>
-							
-													  
-						    <br><br>
-						  <button type="submit" class="btn btn-success">Créer</button><br>
-					</form>
 				</div>
 			</div>
 	    </div>
@@ -137,6 +124,6 @@
 		
 		</div>
 	</div>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
