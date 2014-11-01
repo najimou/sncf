@@ -16,8 +16,6 @@
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 
   </head>
-
-  <body>
   
   	<body>
 
@@ -62,12 +60,19 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
+					<% if (request.getAttribute("message")!=null) {
+						out.print("<div id =\"message\">" + request.getAttribute("message") +". </div>");%>
+						<br><form  method="get" action="<%=MappedJsp.HOME %>" >
+						<button type="submit" class="btn btn-success">Home Page</button>
+					</form>
+					<%} else {%>
 					<img src="img/Train.png" alt="!">
 					<p>Voyager gratuitement, c'est possible ! </p>
 					<p>Decouvre <b>Gratis trip! </b></p>
 					<p>Le site qui te permet de financer tes voyages en train et voyager gratuitement ! <br> Bientot aussi sur le reseau TGV ! </p>
 					<form  method="get" action="<%=MappedJsp.CREATE_TRANSPORT %>" >
 					<button type="submit" class="btn btn-success">Envoyer un colis</button>
+					</form><%} %>
 				</div>
 			</div>
 	    </div>
@@ -77,14 +82,9 @@
 
 	
 	<div id="footer">
-		<div class="container">
-			<div class="row">
 					<p>
 						Projet universitaire - UPMC Paris6
 					</p>
-			</div>
-		
-		</div>
 	</div>
     <script src="assets/js/bootstrap.min.js"></script>
   </body>
