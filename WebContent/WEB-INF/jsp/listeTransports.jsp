@@ -80,7 +80,7 @@
 				            </thead> 
 				            <tbody>
 				            
-				            <% ArrayList<TransportBean> v = (ArrayList<TransportBean>) request.getAttribute("transport"); 
+				            <% ArrayList<TransportBean> v = (ArrayList<TransportBean>) request.getAttribute("transportOffres"); 
 				            for (TransportBean vb : v){
 				            %>
 				            
@@ -110,7 +110,7 @@
 				            </thead> 
 				            <tbody>
 				            
-				            <% ArrayList<TransportBean> v2 = (ArrayList<TransportBean>) request.getAttribute("transport"); 
+				            <% ArrayList<TransportBean> v2 = (ArrayList<TransportBean>) request.getAttribute("transportAFaire"); 
 				            for (TransportBean vb : v2){
 				            %>
 				            
@@ -140,7 +140,7 @@
 				            </thead> 
 				            <tbody>
 				            
-				            <% ArrayList<TransportBean> v3 = (ArrayList<TransportBean>) request.getAttribute("transport"); 
+				            <% ArrayList<TransportBean> v3 = (ArrayList<TransportBean>) request.getAttribute("transportsFait"); 
 				            for (TransportBean vb : v3){
 				            %>
 				            

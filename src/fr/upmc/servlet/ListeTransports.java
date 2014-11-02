@@ -35,15 +35,19 @@ public class ListeTransports extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		TrasporteurBean pojo = (TrasporteurBean) session.getAttribute("user");
 		if (pojo == null){	
-			
-			ArrayList<TransportBean> transports = dao.getAll();
-			request.setAttribute("transportsProposition", transports);
-			
-			
-			this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_TRANSPORTS_JSP ).forward( request, response );
+			request.setAttribute("error", "Session perdue ! veuillez vous reconnecter!");
+			this.getServletContext().getRequestDispatcher( MappedJsp.ERROR).forward( request, response );
 		} else {
-			ArrayList<TransportBean> transports = dao.getByIdTransporteur(pojo.getId());
-			request.setAttribute("transport", transports);
+			
+			ArrayList<TransportBean> transportsOffres = dao.getByIdTransporteurToAccept(pojo.getId());
+			request.setAttribute("transportOffres", transportsOffres);
+			System.out.println(transportsOffres.size());
+			ArrayList<TransportBean> transportsAFaire = dao.getByIdTransporteurToDo(pojo.getId());
+			request.setAttribute("transportAFaire", transportsAFaire);
+			System.out.println(transportsAFaire.size());
+			ArrayList<TransportBean> transportsFait = dao.getByIdTransporteurFinished(pojo.getId());
+			request.setAttribute("transportsFait", transportsFait);
+			System.out.println(transportsFait.size());
 			this.getServletContext().getRequestDispatcher( MappedJsp.LISTE_TRANSPORTS_JSP).forward( request, response );
 		}
 	}

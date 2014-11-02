@@ -45,4 +45,11 @@ public class VoyageDAO extends MasterDAO{
 		}else return null;
 	}
 
+	public VoyageBean getById(int i) {
+		Query query = session.createQuery("from VoyageBean where id = :id ");
+		query.setParameter("id", i);
+		 VoyageBean e =  ( VoyageBean) query.uniqueResult();
+		return e;	
+	}
+
 }

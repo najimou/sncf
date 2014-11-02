@@ -96,7 +96,7 @@
 				    </div>
 					<% if (sessionok) {%>
 						<form  method="get" action="<%=MappedJsp.RENSEIGNER_VOYAGE %>" >
-						 <button type="submit" class="btn btn-success">Ajouter un voyage</button>
+						 <button type="submit" class="btn btn-success">Ajouter un voyage</button></form>
 					<% } %>
 				</div>
 			</div>

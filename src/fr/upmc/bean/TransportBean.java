@@ -79,6 +79,10 @@ public class TransportBean extends MasterBEAN implements Serializable{
 	
 	
 	
+	public void setVoyage(VoyageBean voyage) {
+		this.voyage = voyage;
+	}
+
 	public String getMailEnvoi() {
 		return mailEnvoi;
 	}

@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="fr.upmc.bean.VoyageBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="fr.upmc.bean.TrasporteurBean"%>
 <%@page import="fr.upmc.mappings.MappedJsp"%>
 <html lang="en">
@@ -60,11 +62,45 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
-					choix voyage
+				
+				<form  method="post">
+				 <input type="hidden" name="token" value="<%=request.getParameter("token")%>">
+				 <input type="hidden" name="mail" value="<%=request.getParameter("mail")%>">	 
+				  <div class="table-responsive"> 
+			        <table class="table table-bordered">
+			            <thead>
+			                <tr> 
+			                    <th>Selection</th>
+			                    <th>Gare Depart</th>
+			                    <th>Heure Depart</th>
+			                    <th>Gare Arrivee</th>
+			                    <th>Heure Arrivee</th>
+			                    <th>Prix</th>
+			                </tr>
+			            </thead> 
+			            <tbody>
+			            
+					<%ArrayList<VoyageBean> voyages = ((ArrayList<VoyageBean>)request.getAttribute("choixVoyages")); 
+					for (VoyageBean vb : voyages){
+			            %>
+			            
+			                <tr>
+			                 	<td><input type="radio" name="id" value="<%=vb.getId()%>"></td>
+			                    <td><%=vb.getDepart()%></td>
+			                    <td><%=vb.getHeureDepart() %></td>
+			                    <td><%=vb.getArrivee()%></td>
+			                    <td><%=vb.getHeureArrivee()%></td>
+			                    <td><input type="text" name="prix"></td>
+			                </tr>
+			            <% } %>   
+					</tbody>
+					</table>
+					<button type="submit" class="btn btn-success">Valider mon choix</button></div></form>
+					</div>
 				</div>
 			</div>
 	    </div>
-	</div>
+
 	
 	
 
