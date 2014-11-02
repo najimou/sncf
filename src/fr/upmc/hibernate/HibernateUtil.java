@@ -36,7 +36,7 @@ public class HibernateUtil {
 			.setProperty("hibernate.hbm2ddl.auto", "create")
 			.setProperty("hibernate.format_sql", "true")
 			.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect")
-			.configure().buildSessionFactory();
+			.buildSessionFactory();
 			
 			
 		} catch (Throwable ex) {
