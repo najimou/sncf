@@ -32,7 +32,7 @@ public class HibernateUtil {
 			.setProperty("hibernate.connection.url", dbUrl)
 			.setProperty("hibernate.connection.username", username)
 			.setProperty("hibernate.connection.password", password)
-			.setProperty("hibernate.connection.pool_size", "true")
+			.setProperty("hibernate.connection.pool_size", "1")
 			.setProperty("hibernate.hbm2ddl.auto", "create")
 			.setProperty("hibernate.format_sql", "true")
 			.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect")
