@@ -19,7 +19,7 @@ public class HibernateUtil {
 			String password = dbUri.getUserInfo().split(":")[1];
 			String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
 			//System.out.println(dbUrl);
-			SessionFactory cfg = new AnnotationConfiguration()
+			sessionFactory = new AnnotationConfiguration()
 			.addPackage("fr.upmc.bean")
 			.addAnnotatedClass(EvaluationBean.class)
 			.addAnnotatedClass(MasterBEAN.class)
@@ -38,7 +38,7 @@ public class HibernateUtil {
 			.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect")
 			.configure().buildSessionFactory();
 			
-			sessionFactory = cfg;
+			
 		} catch (Throwable ex) {
 			System.err.println("Initial SessionFactory creation failed." + ex);
 			throw new ExceptionInInitializerError(ex);
