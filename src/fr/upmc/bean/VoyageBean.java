@@ -32,7 +32,7 @@ public class VoyageBean extends MasterBEAN implements Serializable{
 	@Column(name = "DEPART", nullable = false)
 	private String depart;
 	
-	@Column(name = "DATE", nullable = false)
+	@Column(name = "DATE", nullable = true)
 	private String date;
 
 	@Column(name = "HEUREDEPART", nullable = false)
