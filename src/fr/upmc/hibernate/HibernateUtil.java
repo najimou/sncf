@@ -28,7 +28,7 @@ public class HibernateUtil {
 			.addAnnotatedClass(TrasporteurBean.class)
 			.addAnnotatedClass(VoyageBean.class)
 			.addAnnotatedClass(Train.class)
-			.setProperty("hibernate.connection.driver_class", "postgresql.Driver")
+			.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver")
 			.setProperty("hibernate.connection.url", dbUrl)
 			.setProperty("hibernate.connection.username", username)
 			.setProperty("hibernate.connection.password", password)
