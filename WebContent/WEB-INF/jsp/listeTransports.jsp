@@ -17,7 +17,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-
+	<script type="text/javascript" src="js/transports.js"></script>
   </head>
 
   <body>
@@ -75,7 +75,8 @@
 				                    <th>Train</th>
 				                    <th>Description</th>
 				                    <th>Dimension</th>
-				                    <th>Gain</th>
+				                    <th>Gain/Prix</th>
+				                    <th>Decision</th>
 				                </tr>
 				            </thead> 
 				            <tbody>
@@ -88,8 +89,11 @@
 				                 	<td><%=vb.getVoyage().getDepart()%>-<%=vb.getVoyage().getArrivee() %> [<%=vb.getVoyage().getDate()%>]</td>
 				                    <td><%=vb.getColisDescription()%></td>
 				                    <td><%=vb.getColisDimension()%></td>
-				                    <td><%=vb.getCout() %></td>
+				                    <td><%=vb.getCout() %> Euro </td>
+				                    <td><a href="#"  onclick="manageTransport('accept', <%=vb.getId()%>);" >accepter</a> - <a href="#"  onclick="manageTransport('refuser', <%=vb.getId()%>);">refuser</a></td>
 				                </tr>
+				                
+				                
 				            <% } %>   
 				            </tbody>
 				        </table>

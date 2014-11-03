@@ -1,6 +1,8 @@
-<!DOCTYPE html>
+<%@page import="fr.upmc.bean.Train"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="fr.upmc.bean.TrasporteurBean"%>
 <%@page import="fr.upmc.mappings.MappedJsp"%>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -56,32 +58,50 @@
     </div>
 
 	
-	<div id="ww">
-	    <div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 centered" id="change_content">
-					<% if (request.getAttribute("message")!=null) {
-						
-						out.print("<div id =\"message\">" + request.getAttribute("message") +". </div>");
-						out.print("<a href=\""+request.getAttribute("link")+"\"> lien de la demande </a>");%>
-						<br><form  method="get" action="<%=MappedJsp.HOME %>" >
-						<button type="submit" class="btn btn-success">Home Page</button>
-					</form>
-					<%} else {%>
-					<img src="img/Train.png" alt="!">
-					<p>Voyager gratuitement, c'est possible ! </p>
-					<p>Decouvre <b>Gratis trip! </b></p>
-					<p>Le site qui te permet de financer tes voyages en train et voyager gratuitement ! <br> Bientot aussi sur le reseau TGV ! </p>
-					<form  method="get" action="<%=MappedJsp.CREATE_TRANSPORT %>" >
-					<button type="submit" class="btn btn-success">Envoyer un colis</button>
-					</form><%} %>
-				</div>
-			</div>
-	    </div>
-	</div>
-	
-	
+	<div id="ww"> <div class="container">
+<div class="table-responsive"> <form method="post" action="<%=MappedJsp.ROOT %>/saveVoyage">
+				        <table class="table table-bordered">
+				            <thead>
+				                <tr>
+				                    <th>Selection</th>
+				                    <th>N Train</th>
+				                    <th>Date</th>
+				                    <th>Nom train</th>
+				                    
+				                   
+				                </tr>
+				            </thead> 
+				            <tbody>
 
+<%
+ArrayList<Train> list = (ArrayList<Train>) request.getAttribute("listeTrains");
+for (Train vb : list){
+
+%>
+
+ 								<tr>
+				                 	<td><input type="radio" name="option" value="<%=vb.getNumero()%>"></td>
+				                 	<td><%=vb.getNumero()%></td>
+				                    <td><%=vb.getDateDepart()%></td>
+				                    <td><%=vb.getMiss()%></td>
+				                   
+				              
+				                </tr>
+
+<%}%>
+
+</tbody>
+				        </table>
+				        
+				        <% if (list.size() <1){out.print("Aucun resultat trouvé :(");}
+				        else {%>
+				        
+				         <button type="submit" class="btn btn-success">Valider</button><br></form>
+				        
+				        
+				        <%}%>
+				        </div><br><br><br></div></div>
+				        
 	
 	<div id="footer">
 					<p>
@@ -90,4 +110,5 @@
 	</div>
     <script src="assets/js/bootstrap.min.js"></script>
   </body>
-</html>
+</html>				        
+				        

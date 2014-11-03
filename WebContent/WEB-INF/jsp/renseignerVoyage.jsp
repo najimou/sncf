@@ -14,10 +14,13 @@
     <title>Projet UPMC - Transilien SNCF 2014/2015</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<link href="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/ru.js" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.min.js"></script>
+    <script type="text/javascript" src="js/trains.js"></script>
   </head>
 
   <body>
@@ -68,7 +71,7 @@
 					
 					
 					
-					<form role="form" method="post">
+					<form role="form" name="trainform" method="post" target="<%=MappedJsp.LISTETRAINS%>">
 						 
 						  <div class="container">
                     
@@ -76,22 +79,28 @@
 
 						  </div>
 						  <div class="form-group">
-						    <input type="text" name="<%=MappedNames.GARE_DEPART%>" class="form-control" id="<%=MappedNames.GARE_DEPART%>" placeholder="Depart" >
+						    <input type="text" class="typeahead" id="depart" name="<%=MappedNames.GARE_DEPART%>" class="form-control" id="<%=MappedNames.GARE_DEPART%>" placeholder="Depart" >
 						  </div>
+<!-- 						  <div class="form-group"> -->
+<%-- 						    <input type="text"  name="<%=MappedNames.HEURE_DEPART%>" class="form-control" id="<%=MappedNames.HEURE_DEPART%>" placeholder="Heure depart" > --%>
+<!-- 						  </div> -->
 						  <div class="form-group">
-						    <input type="text" name="<%=MappedNames.HEURE_DEPART%>" class="form-control" id="<%=MappedNames.HEURE_DEPART%>" placeholder="Heure depart" >
+						    <input type="text" class="typeahead" id="arrivee" name="<%=MappedNames.GARE_ARRIVEE%>" class="form-control" id="<%=MappedNames.GARE_ARRIVEE%>" placeholder="Arrivee">
 						  </div>
-						  <div class="form-group">
-						    <input type="text" name="<%=MappedNames.GARE_ARRIVEE%>" class="form-control" id="<%=MappedNames.GARE_ARRIVEE%>" placeholder="Arrivee">
-						  </div>
-						   <div class="form-group">
-						    <input type="text" name="<%=MappedNames.HEURE_ARRIVEE%>" class="form-control" id="<%=MappedNames.HEURE_ARRIVEE%>" placeholder="Heure arrivee">
-						  </div>
+<!-- 						   <div class="form-group"> -->
+<%-- 						    <input type="text" name="<%=MappedNames.HEURE_ARRIVEE%>" class="form-control" id="<%=MappedNames.HEURE_ARRIVEE%>" placeholder="Heure arrivee"> --%>
+<!-- 						  </div> -->
 						    <br>
 						    <input type="hidden" name="<%=MappedNames.NB_TRAIN%>" value="123">
-						  <button type="submit" class="btn btn-success">Ajouter a mes voyages</button><br>
+						     <button type="submit"  class="btn btn-success">Rechercher voyages</button><br>
 					</form>
+					
+						 
 				</div>
+				
+				
+				
+				<div id="trains"></div>
 			</div>
 	    </div>
 	</div>
@@ -109,7 +118,32 @@
 		
 		</div>
 	</div>
-    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    // Waiting for the DOM ready...
+    $(function(){
+      // applied typeahead to the text input box
+      $('#depart').typeahead({
+        name: 'gares',
+        // data source
+        prefetch: 'data/gares.json',
+        // max item numbers list in the dropdown
+        limit: 10
+      });
+
+    });
+  </script>
+  
+   <script type="text/javascript">
+    $(function(){
+      $('#arrivee').typeahead({
+        name: 'gares',
+        prefetch: 'data/gares.json',
+        limit: 10
+      });
+
+    });
+  </script>
         
   </body>
 </html>

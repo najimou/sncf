@@ -16,7 +16,11 @@
     <title>Projet UPMC - Transilien SNCF 2014/2015</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.min.js"></script>
+
 
   </head>
 
@@ -70,7 +74,17 @@
 					
 						<form role="form" method="post" class="form-horizontal" >
 				
-						
+						<div class="form-group">
+						  <label for="" class="col-sm-2 control-label">Gare Départ</label>
+     				 <div class="col-sm-10">
+						    <input type="text" class="typeahead" id="depart" name="<%=MappedNames.GARE_DEPART%>" class="form-control" id="<%=MappedNames.GARE_DEPART%>">
+						  </div></div>
+						  <div class="form-group">
+						  <label for="" class="col-sm-2 control-label">Gare Arrivée</label>
+     				 <div class="col-sm-10">
+						    <input type="text" class="typeahead" id="arrivee"  name="<%=MappedNames.GARE_ARRIVEE%>" class="form-control" id="<%=MappedNames.GARE_ARRIVEE%>">
+						  </div>
+						  </div>
 						  <div class="form-group">
 						  	<label for="" class="col-sm-2 control-label">Votre E-mail</label>
      						<div class="col-sm-10">
@@ -83,17 +97,7 @@
 						    <input type="text" name="<%=MappedNames.MAIL_RECEVEUR%>" class="form-control" id="<%=MappedNames.MAIL_RECEVEUR%>">
 						  	</div>
 						  </div>
-						  <div class="form-group">
-						  <label for="" class="col-sm-2 control-label">Gare Départ</label>
-     				 <div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.GARE_DEPART%>" class="form-control" id="<%=MappedNames.GARE_DEPART%>">
-						  </div></div>
-						  <div class="form-group">
-						  <label for="" class="col-sm-2 control-label">Gare Arrivée</label>
-     				 <div class="col-sm-10">
-						    <input type="text" name="<%=MappedNames.GARE_ARRIVEE%>" class="form-control" id="<%=MappedNames.GARE_ARRIVEE%>">
-						  </div>
-						  </div>
+						  
 
 						  <div class="form-group">
   							<label for="" class="col-sm-2 control-label">Description colis</label>
@@ -138,5 +142,25 @@
 		</div>
 	</div>
     <script src="js/bootstrap.min.js"></script>
+     <script type="text/javascript">
+    $(function(){
+      $('#depart').typeahead({
+        name: 'gares',
+        prefetch: 'data/gares.json',
+        limit: 10
+      });
+
+    });
+  </script>
+   <script type="text/javascript">
+    $(function(){
+      $('#arrivee').typeahead({
+        name: 'gares',
+        prefetch: 'data/gares.json',
+        limit: 10
+      });
+
+    });
+  </script>
   </body>
 </html>
