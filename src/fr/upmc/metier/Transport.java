@@ -22,10 +22,7 @@ public class Transport {
      return dao.insert(t);
    }
    
-   public boolean supprimer() {
-      // TODO: implement
-      return false;
-   }
+
 
 public boolean ajouterChoixVoyagesEnvoyeur(int parseInt, String string) {
 	 TransportDAO dao = new TransportDAO();
@@ -54,6 +51,33 @@ public TransportBean getTransportByTokenAndMail(String token, String mail) {
 	TransportDAO dao = new TransportDAO();
 	 TransportBean pojo = dao.getByTokenAndMail(token, mail);
 	 return pojo;
+}
+
+public boolean accepterTransport(int idVoyage, int idTransporteur) {
+	TransportDAO dao = new TransportDAO();
+	try{
+		TransportBean pojo = dao.getByIdVoyageAndIdTransporteur(idVoyage, idTransporteur);
+		pojo.setAccepted(true);
+		pojo.setAcceptedBy(idTransporteur);
+		dao.update(pojo);
+	} catch (Exception e ){
+		return false;
+	}
+	
+	return true;
+}
+
+public boolean refuserTransport(int idVoyage, int idTransporteur) {
+	TransportDAO dao = new TransportDAO();
+	try{
+		TransportBean pojo = dao.getByIdVoyageAndIdTransporteur(idVoyage, idTransporteur);
+		pojo.setAccepted(false);
+		pojo.setProposedTo(0);
+		dao.update(pojo);
+	} catch (Exception e ){
+		return false;
+	}
+	return true;
 }
 
 

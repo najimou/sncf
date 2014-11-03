@@ -11,9 +11,11 @@ import fr.upmc.bean.EvaluationBean;
 public class EvaluationDAO extends MasterDAO {
  
 	public EvaluationBean getById(int id){
+		session = sf.openSession();
 		Query query = session.createQuery("from EvaluationBean where ID = :id ");
 		query.setParameter("id", id);
 		EvaluationBean e =  (EvaluationBean) query.uniqueResult();
+		session.close();
 		return e;		
 	}
 	

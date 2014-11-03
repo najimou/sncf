@@ -3,7 +3,7 @@ package fr.upmc.bean;
 import java.io.Serializable;
 
 
-public class Train extends MasterBEAN implements Serializable {
+public class Train implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -12,8 +12,6 @@ public class Train extends MasterBEAN implements Serializable {
 	private String numero;
 	private String miss; 
 	private String term; 
-	private String etat;
-	
 
 	public String getDateDepart() {
 		return dateDepart;
@@ -47,13 +45,6 @@ public class Train extends MasterBEAN implements Serializable {
 		this.term = term;
 	}
 
-	public String getEtat() {
-		return etat;
-	}
-
-	public void setEtat(String etat) {
-		this.etat = etat;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

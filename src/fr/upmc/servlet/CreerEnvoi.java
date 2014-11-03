@@ -50,21 +50,6 @@ public class CreerEnvoi extends HttpServlet {
 					request.setAttribute("error", MappedErrors.MAIL_INVALIDE_RECEVEUR); error = true;
 				}
 				
-				pattern = Pattern.compile(SecurityPattern.STANDARD_PATTERN);
-				cache = request.getParameter(MappedNames.GARE_DEPART);
-				matcher = pattern.matcher(cache);
-				
-				if (!matcher.matches()){
-					request.setAttribute("error", MappedErrors.ERREUR_GARE); error = true;
-				}
-				
-				cache = request.getParameter(MappedNames.GARE_ARRIVEE);
-				matcher = pattern.matcher(cache);
-				
-				if (!matcher.matches()){
-					request.setAttribute("error", MappedErrors.ERREUR_GARE); error = true;
-				}
-				
 				// TODO controler donnees sur la textarea
 				
 				
@@ -86,7 +71,8 @@ public class CreerEnvoi extends HttpServlet {
 						session.setAttribute("arrivee", request.getParameter(MappedNames.GARE_ARRIVEE));
 					}
 				}
-				
+				HttpSession s = request.getSession(true);
+				s.setAttribute("mailReceveur", request.getParameter(MappedNames.MAIL_RECEVEUR));
 				if (error == true) this.getServletContext().getRequestDispatcher( MappedJsp.ERROR).forward( request, response );
 				else response.sendRedirect(MappedJsp.VENDEUR_SELECTIONNE_TRAIN);
 	}

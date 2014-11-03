@@ -42,9 +42,11 @@ public class ListeTransports extends HttpServlet {
 			ArrayList<TransportBean> transportsOffres = dao.getByIdTransporteurToAccept(pojo.getId());
 			request.setAttribute("transportOffres", transportsOffres);
 			System.out.println(transportsOffres.size());
+			dao = new TransportDAO();
 			ArrayList<TransportBean> transportsAFaire = dao.getByIdTransporteurToDo(pojo.getId());
 			request.setAttribute("transportAFaire", transportsAFaire);
 			System.out.println(transportsAFaire.size());
+			dao = new TransportDAO();
 			ArrayList<TransportBean> transportsFait = dao.getByIdTransporteurFinished(pojo.getId());
 			request.setAttribute("transportsFait", transportsFait);
 			System.out.println(transportsFait.size());

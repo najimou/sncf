@@ -65,7 +65,7 @@ public class SelectionTrain extends HttpServlet {
 		
 		//send mail + link with token
 		
-		
+		request.setAttribute("link", MappedJsp.ROOT+"/ProposerVoyage?token="+token+"&mail="+session.getAttribute("mailReceveur"));
 		
 		this.getServletContext().getRequestDispatcher( MappedJsp.HOME_JSP).forward( request, response );
 	}
