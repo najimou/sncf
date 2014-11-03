@@ -7,7 +7,7 @@ package fr.upmc.mappings;
 public class MappedJsp {
 	
 	
-	public static String ROOT					= "/DAR_UPMC";
+	public static String ROOT					= "";
 	public static String HOME_JSP 				= "/index.jsp";
 	public static String HOME					= ROOT+"/index.jsp";
 	
