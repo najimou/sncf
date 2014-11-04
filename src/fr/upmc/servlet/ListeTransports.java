@@ -56,7 +56,7 @@ public class ListeTransports extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		TransportBean pojo = (TransportBean) session.getAttribute("User");
+		TransportBean pojo = (TransportBean) session.getAttribute("user");
 		if (pojo == null){
 			request.setAttribute("error", MappedErrors.NOT_AUTORIZED);
 			this.getServletContext().getRequestDispatcher( MappedJsp.ERROR ).forward( request, response );

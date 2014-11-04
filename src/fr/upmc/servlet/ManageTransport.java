@@ -36,6 +36,7 @@ public class ManageTransport extends HttpServlet {
 				int idTransporteur = t.getId();
 				int idVoyage = Integer.parseInt(request.getParameter("id"));
 				Transport tr = new Transport();
+				int idTransport;
 				if (request.getParameter("type").equals("accept")){
 					tr.accepterTransport(idVoyage, idTransporteur);
 					response.sendRedirect(MappedJsp.LISTE_TRANSPORTS);
