@@ -90,7 +90,7 @@
 				                    <td><%=vb.getColisDescription()%></td>
 				                    <td><%=vb.getColisDimension()%></td>
 				                    <td><%=vb.getCout() %> Euro </td>
-				                    <td><a href="#"  onclick="manageTransport('accept', <%=vb.getId()%>);" >accepter</a> - <a href="#"  onclick="manageTransport('refuser', <%=vb.getId()%>);">refuser</a></td>
+				                    <td><a href="#"  onclick="manageTransport('accept', <%=vb.getVoyage().getId()%>);" >accepter</a> - <a href="#"  onclick="manageTransport('refuser', <%=vb.getId()%>);">refuser</a></td>
 				                </tr>
 				                
 				                
@@ -109,7 +109,7 @@
 				                    <th>Description</th>
 				                    <th>Dimension</th>
 				                    <th>Gain</th>
-				                    <th>Note</th>
+				                    <th>Finaliser</th>
 				                </tr>
 				            </thead> 
 				            <tbody>
@@ -123,7 +123,7 @@
 				                    <td><%=vb.getColisDescription()%></td>
 				                    <td><%=vb.getColisDimension()%></td>
 				                    <td><%=vb.getCout() %></td>
-				                    <td> :)</td>
+				                    <td> <a href="#"> Finaliser </a></td>
 				                </tr>
 				            <% } %>   
 				            </tbody>
