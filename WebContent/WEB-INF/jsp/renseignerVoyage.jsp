@@ -71,7 +71,7 @@
 					
 					
 					
-					<form role="form" name="trainform" method="post" target="<%=MappedJsp.LISTETRAINS%>">
+					<form role="form" name="trainform" method="post" action="<%=MappedJsp.LISTETRAINS%>">
 						 
 						  <div class="container">
                     
