@@ -70,7 +70,7 @@ public class RenseignerVoyage extends HttpServlet {
 				session.setAttribute("listeTrains", trains);
 				this.getServletContext().getRequestDispatcher( MappedJsp.LISTETRAINS).forward( request, response);
 			} catch (Exception e){
-				request.setAttribute("error", "Vous devez etre connecté pour effectuer cette action");
+				request.setAttribute("error", "Une erreur c'est produite lors de l'appel à l'api");
 				this.getServletContext().getRequestDispatcher( MappedJsp.ERROR).forward( request, response );
 			}
 		}
