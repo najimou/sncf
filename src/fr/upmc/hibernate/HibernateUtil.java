@@ -38,6 +38,12 @@ public class HibernateUtil {
 			.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect")
 			.buildSessionFactory();
 			
+//			sessionFactory = new AnnotationConfiguration()
+//		    .configure() // configures settings from hibernate.cfg.xml
+//		    .buildSessionFactory();
+			
+			
+			
 			
 		} catch (Throwable ex) {
 			System.err.println("Initial SessionFactory creation failed." + ex);

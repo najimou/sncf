@@ -38,16 +38,19 @@ public class SncfService {
 			String user = "panqahwnbgypyh";
 			String mdp = "IAU5rcF7i8sNF3nP_xaWzW_vhJ";
 			String jdbc_DB = "jdbc:postgresql://ec2-54-83-204-85.compute-1.amazonaws.com:5432/d56j3th66kubkh";
-			String dataBaseName = "PostGres";
+			String dataBaseName = "PostGres";	
 			
+//			String classeNameDriver = "org.postgresql.Driver";
+//			String user = "postgres";
+//			String mdp = "postgres";
+//			String jdbc_DB = "jdbc:postgresql://localhost:5432/test";
+//			String dataBaseName = "PostGres";	
 			
 //			String classeNameDriver = "com.mysql.jdbc.Driver";
 //			String user = "root";
 //			String mdp = "usbw";
 //			String jdbc_DB = "jdbc:mysql://localhost:3307/test";
 //			String dataBaseName = "MySQL";
-			
-			
 			
 			Connection connection = null;
 			BddUtility bu = new BddUtility(classeNameDriver, user, mdp, jdbc_DB, dataBaseName, connection);
