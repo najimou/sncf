@@ -9,7 +9,7 @@ public class GareDAO {
 
 	    public ResultSet getGare(Connection connection, String gareName) throws SQLException
 	    {
-	        String sql = "SELECT * FROM gares WHERE libelle_point_d_arret = '"+gareName+"'";
+	        String sql = "SELECT * FROM gares WHERE libelle_point_d_arret = \""+gareName+"\"";
 	        PreparedStatement ps = connection.prepareStatement(sql);
 	        ResultSet rs = ps.executeQuery();
 	        
