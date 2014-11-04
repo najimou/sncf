@@ -7,7 +7,7 @@ package fr.upmc.mappings;
 public class MappedJsp {
 	
 	
-	public static String ROOT					= "";
+	public static String ROOT					= "/";
 	public static String HOME_JSP 				= "/index.jsp";
 	public static String HOME					= ROOT+"/index.jsp";
 	
@@ -42,12 +42,12 @@ public class MappedJsp {
 	public static final String CREATE_TRANSPORT 	= ROOT+"/CreerEnvoi";
 	public static final String CREATE_TRANSPORT_JSP	= "/WEB-INF/jsp/creerEnvoi.jsp";
 	
-	public static final String VENDEUR_SELECTIONNE_TRAIN 		= ROOT+"/SelectionTrain";
+	public static final String VENDEUR_SELECTIONNE_TRAIN 		= "/SelectionTrain";
 	public static final String VENDEUR_SELECTIONNE_TRAIN_JSP 	= "/WEB-INF/jsp/selectionTrain.jsp";
 	
 	public static final String CHOIX_VOYAGE_RECEVEUR			= ROOT+"/SelectionVoyage";
 	public static final String CHOIX_VOYAGE_RECEVEUR_JSP		= "/WEB-INF/jsp/selectionVoyage.jsp";
 	
-	public static final String LISTETRAINS 						= "/WEB-INF/jsp/listeTrains.jsp";
+	public static final String LISTETRAINS 						= ROOT+"/WEB-INF/jsp/listeTrains.jsp";
 	
 }
