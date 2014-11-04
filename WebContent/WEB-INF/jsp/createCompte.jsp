@@ -76,7 +76,7 @@
 						  </div>
 						  </div>
 						    <br>
-						  <button type="submit" class="btn btn-success">ENTER</button><br>
+						  <button type="submit" class="btn btn-success">CREER</button><br><br>
 					</form>
 					
 					
